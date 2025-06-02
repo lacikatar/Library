@@ -24,27 +24,47 @@ try {
 // Handle book return
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
     $borrowId = $_POST['borrow_id'];
-    $returnStmt = $conn->prepare("
-        UPDATE borrowing 
-        SET Status = 'Returned', Return_Date = CURDATE() 
-        WHERE Bor_ID = ? AND Member_ID = ?
-    ");
-    $returnStmt->execute([$borrowId, $_SESSION['user_id']]);
     
-    // Log the return activity
-    $isbnStmt = $conn->prepare("
-        SELECT b.ISBN 
-        FROM borrowing br 
-        JOIN copy c ON br.Copy_ID = c.Copy_ID 
-        JOIN book b ON c.ISBN = b.ISBN 
-        WHERE br.Bor_ID = ?
-    ");
-    $isbnStmt->execute([$borrowId]);
-    $isbn = $isbnStmt->fetchColumn();
-    logUserActivity($_SESSION['user_id'], $isbn, 'Returned', $conn);
-    
-    header("Location: borrowed.php");
-    exit();
+    try {
+        $conn->beginTransaction();
+        
+        // Update borrowing status
+        $returnStmt = $conn->prepare("
+            UPDATE borrowing 
+            SET Status = 'Returned', Return_Date = CURDATE() 
+            WHERE Bor_ID = ? AND Member_ID = ?
+        ");
+        $returnStmt->execute([$borrowId, $_SESSION['user_id']]);
+        
+        // Get the ISBN of the returned book
+        $isbnStmt = $conn->prepare("
+            SELECT b.ISBN 
+            FROM borrowing br 
+            JOIN copy c ON br.Copy_ID = c.Copy_ID 
+            JOIN book b ON c.ISBN = b.ISBN 
+            WHERE br.Bor_ID = ?
+        ");
+        $isbnStmt->execute([$borrowId]);
+        $isbn = $isbnStmt->fetchColumn();
+        
+        // Update user's book status to 'Read'
+        $statusStmt = $conn->prepare("
+            INSERT INTO user_book_status (Member_ID, ISBN, Status)
+            VALUES (?, ?, 'Read')
+            ON DUPLICATE KEY UPDATE Status = 'Read'
+        ");
+        $statusStmt->execute([$_SESSION['user_id'], $isbn]);
+        
+        // Log the return activity
+        logUserActivity($_SESSION['user_id'], $isbn, 'Returned', $conn);
+        
+        $conn->commit();
+        header("Location: borrowed.php");
+        exit();
+    } catch (Exception $e) {
+        $conn->rollBack();
+        die("Error returning book: " . $e->getMessage());
+    }
 }
 
 // Get current borrowed books

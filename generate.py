@@ -70,8 +70,8 @@ def generate_book_insert(books):
         image_value = 'NULL' if not image_url else f"'{image_url}'"
         description_value = 'NULL' if not description else f"'{description}'"
         
-        # Get publisher_id using a subquery, handle NULL case, and explicitly set collation
-        publisher_subquery = f"(SELECT Publisher_ID FROM publisher WHERE Name COLLATE utf8mb4_0900_ai_ci = '{publisher}' COLLATE utf8mb4_0900_ai_ci)" if publisher else 'NULL'
+        # Get publisher_id using a subquery, handle NULL case
+        publisher_subquery = f"(SELECT Publisher_ID FROM publisher WHERE Name = '{publisher}')" if publisher else 'NULL'
         
         sql += f"VALUES ('{book['ISBN']}','{title}',{publisher_subquery},{description_value},{book['Release Year']},{book['Page Count']},{series_value},{image_value});"
         book_sql.append(sql)

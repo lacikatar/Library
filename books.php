@@ -13,20 +13,70 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Fetch all books with their titles, authors, image URLs, and categories
-$sql1 = "SELECT DISTINCT b.ISBN, 
-       b.Title, 
-       GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors, 
-       b.Image_URL, 
-       GROUP_CONCAT(DISTINCT c.name SEPARATOR ', ') as categories 
-FROM Book b
-INNER JOIN wrote w ON b.isbn = w.isbn
-INNER JOIN author a ON a.author_id = w.author_id
-LEFT JOIN belongs bl ON b.isbn = bl.isbn
-LEFT JOIN category c ON bl.category_id = c.category_id
-GROUP BY b.isbn, b.Title, b.Image_URL 
-ORDER BY b.Title ASC";
-$stmt = $conn->query($sql1);
+// Get current page and sort parameters
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'title';
+$sort_order = isset($_GET['order']) ? $_GET['order'] : 'asc';
+$availability = isset($_GET['availability']) ? $_GET['availability'] : '';
+
+$books_per_page = 16;
+$offset = ($page - 1) * $books_per_page;
+
+// Get sorting
+$sort_column = match($sort_by) {
+    'page' => 'b.Page_Nr',
+    'year' => 'b.Release_Year',
+    default => 'b.Title'
+};
+
+$sort_direction = $sort_order === 'desc' ? 'DESC' : 'ASC';
+
+// Build availability condition
+$availability_condition = '';
+if ($availability === 'available') {
+    $availability_condition = "AND EXISTS (
+        SELECT 1 FROM copy c2 
+        WHERE c2.ISBN = b.ISBN 
+        AND NOT EXISTS (
+            SELECT 1 FROM borrowing b2 
+            WHERE b2.Copy_ID = c2.Copy_ID 
+            AND b2.Status IN ('Checked Out', 'Overdue')
+        )
+    )";
+}
+
+// First get total count of books
+$count_sql = "SELECT COUNT(DISTINCT b.ISBN) as total 
+              FROM Book b
+              WHERE 1=1 $availability_condition";
+$total_books = $conn->query($count_sql)->fetch(PDO::FETCH_ASSOC)['total'];
+$total_pages = ceil($total_books / $books_per_page);
+
+// Fetch books with pagination and sorting
+$sql1 = "WITH RankedBooks AS (
+    SELECT DISTINCT b.ISBN, 
+           b.Title, 
+           b.Page_Nr,
+           GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors, 
+           b.Image_URL, 
+           GROUP_CONCAT(DISTINCT c.name SEPARATOR ', ') as categories,
+           b.Release_Year,
+           ROW_NUMBER() OVER (ORDER BY $sort_column $sort_direction) as row_num
+    FROM Book b
+    INNER JOIN wrote w ON b.isbn = w.isbn
+    INNER JOIN author a ON a.author_id = w.author_id
+    LEFT JOIN belongs bl ON b.isbn = bl.isbn
+    LEFT JOIN category c ON bl.category_id = c.category_id
+    WHERE 1=1 $availability_condition
+    GROUP BY b.isbn, b.Title, b.Page_Nr, b.Image_URL, b.Release_Year
+)
+SELECT * FROM RankedBooks 
+WHERE row_num BETWEEN :offset + 1 AND :offset + :limit";
+
+$stmt = $conn->prepare($sql1);
+$stmt->bindValue(':limit', $books_per_page, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
 ?>
 <!DOCTYPE html>
 <html>
@@ -251,6 +301,90 @@ $stmt = $conn->query($sql1);
             text-align: center;
             color: #7F8C8D;
         }
+         .navbar-nav {
+            align-items: center;
+        }
+        .d-flex.align-items-center {
+            align-items: center !important;
+        }
+        .pagination {
+            margin-top: 2rem;
+        }
+        .page-link {
+            color: #8B7355;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .page-link:hover {
+            background-color: #F4EBE2;
+            color: #8B7355;
+        }
+        .page-item.active .page-link {
+            background-color: #8B7355;
+            color: white;
+        }
+        .page-item.disabled .page-link {
+            color: #ccc;
+            pointer-events: none;
+        }
+        .sort-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .sort-btn {
+            background-color: #8B7355;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .sort-btn:hover {
+            background-color: #6B5B4C;
+        }
+        .sort-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.5rem;
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+        .sort-options.show {
+            display: block;
+        }
+        .sort-option {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #2C3E50;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .sort-option:hover {
+            background-color: #F4EBE2;
+            color: #8B7355;
+        }
+        .sort-option.active {
+            background-color: #8B7355;
+            color: white;
+        }
+        .sort-divider {
+            height: 1px;
+            background-color: #eee;
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
@@ -315,6 +449,48 @@ $stmt = $conn->query($sql1);
     </div>
 </nav>
 <div class="container mt-4">
+    <div class="d-flex justify-content-end mb-4">
+        <div class="sort-dropdown">
+            <button class="sort-btn" onclick="toggleSortOptions()">
+                <i class="bi bi-sort-down"></i> Sort
+            </button>
+            <div class="sort-options" id="sortOptions">
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['availability' => ''])); ?>" 
+                   class="sort-option <?php echo $availability === '' ? 'active' : ''; ?>">
+                    All Books
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['availability' => 'available'])); ?>" 
+                   class="sort-option <?php echo $availability === 'available' ? 'active' : ''; ?>">
+                    Available Only
+                </a>
+                <div class="sort-divider"></div>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'page', 'order' => 'asc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'page' && $sort_order === 'asc' ? 'active' : ''; ?>">
+                    Page Number (Ascending)
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'page', 'order' => 'desc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'page' && $sort_order === 'desc' ? 'active' : ''; ?>">
+                    Page Number (Descending)
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'title', 'order' => 'asc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'title' && $sort_order === 'asc' ? 'active' : ''; ?>">
+                    Title (A-Z)
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'title', 'order' => 'desc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'title' && $sort_order === 'desc' ? 'active' : ''; ?>">
+                    Title (Z-A)
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'year', 'order' => 'desc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'year' && $sort_order === 'desc' ? 'active' : ''; ?>">
+                    Release Year (Newest)
+                </a>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['sort' => 'year', 'order' => 'asc'])); ?>" 
+                   class="sort-option <?php echo $sort_by === 'year' && $sort_order === 'asc' ? 'active' : ''; ?>">
+                    Release Year (Oldest)
+                </a>
+            </div>
+        </div>
+    </div>
     <?php
     if ($stmt->rowCount() > 0) {
         echo '<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">';
@@ -353,6 +529,52 @@ $stmt = $conn->query($sql1);
             echo '</div></div>';
         }
         echo '</div>';
+        
+        // Add pagination controls
+        echo '<nav aria-label="Page navigation" class="mt-4">';
+        echo '<ul class="pagination justify-content-center">';
+        
+        // Previous button
+        $prev_disabled = $page <= 1 ? 'disabled' : '';
+        echo '<li class="page-item ' . $prev_disabled . '">';
+        echo '<a class="page-link" href="?page=' . ($page - 1) . '" aria-label="Previous">';
+        echo '<span aria-hidden="true">&laquo;</span>';
+        echo '</a></li>';
+        
+        // Page numbers
+        $start_page = max(1, $page - 2);
+        $end_page = min($total_pages, $page + 2);
+        
+        if ($start_page > 1) {
+            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+            if ($start_page > 2) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+        }
+        
+        for ($i = $start_page; $i <= $end_page; $i++) {
+            $active = $i == $page ? 'active' : '';
+            echo '<li class="page-item ' . $active . '">';
+            echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
+            echo '</li>';
+        }
+        
+        if ($end_page < $total_pages) {
+            if ($end_page < $total_pages - 1) {
+                echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
+            }
+            echo '<li class="page-item"><a class="page-link" href="?page=' . $total_pages . '">' . $total_pages . '</a></li>';
+        }
+        
+        // Next button
+        $next_disabled = $page >= $total_pages ? 'disabled' : '';
+        echo '<li class="page-item ' . $next_disabled . '">';
+        echo '<a class="page-link" href="?page=' . ($page + 1) . '" aria-label="Next">';
+        echo '<span aria-hidden="true">&raquo;</span>';
+        echo '</a></li>';
+        
+        echo '</ul>';
+        echo '</nav>';
     } else {
         echo '<div class="alert alert-info">No books found!</div>';
     }
@@ -420,6 +642,20 @@ document.addEventListener('DOMContentLoaded', function() {
             searchResults.classList.remove('active');
         }
     });
+});
+
+function toggleSortOptions() {
+    const sortOptions = document.getElementById('sortOptions');
+    sortOptions.classList.toggle('show');
+}
+
+// Close the dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const sortDropdown = document.querySelector('.sort-dropdown');
+    const sortOptions = document.getElementById('sortOptions');
+    if (!sortDropdown.contains(event.target)) {
+        sortOptions.classList.remove('show');
+    }
 });
 </script>
 </body>

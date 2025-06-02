@@ -72,6 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <head>
     <title>Login - Alexandria's Haven</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #E6D5C3;
@@ -166,69 +167,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.php">
-            <i class="bi bi-book"></i> Laci's Library
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-grid-3x3-gap"></i> Catalogue
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="books.php"><i class="bi bi-book"></i> Books</a></li>
-                        <li><a class="dropdown-item" href="authors.php"><i class="bi bi-person"></i> Authors</a></li>
-                        <li><a class="dropdown-item" href="categories.php"><i class="bi bi-tags"></i> Categories</a></li>
-                        <li><a class="dropdown-item" href="book_series.php"><i class="bi bi-collection"></i> Book Series</a></li>
-                    </ul>
-                </li>
-                <?php
-                if (isset($_SESSION['user_id'])) {
-                    echo '<li class="nav-item dropdown">';
-                    echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">';
-                    echo '<i class="bi bi-person-circle"></i> My Library';
-                    echo '</a>';
-                    echo '<ul class="dropdown-menu">';
-                    echo '<li><a class="dropdown-item" href="reading-lists.php"><i class="bi bi-list-check"></i> Reading Lists</a></li>';
-                    echo '<li><a class="dropdown-item" href="borrowed.php"><i class="bi bi-bookmark"></i> Borrowed Books</a></li>';
-                    echo '<li><a class="dropdown-item" href="read.php"><i class="bi bi-check-circle"></i> Read Books</a></li>';
-                    echo '<li><a class="dropdown-item" href="recommendations.php"><i class="bi bi-stars"></i> Recommendations</a></li>';
-                    echo '</ul>';
-                    echo '</li>';
-                }
-                ?>
-            </ul>
-            <div class="d-flex align-items-center">
-                <div class="search-container">
-                    <input type="text" class="form-control search-input" id="searchInput" placeholder="Search books...">
-                    <div class="search-results" id="searchResults"></div>
-                </div>
-                <button class="btn btn-link text-light ms-2 search-toggle" id="searchToggle">
-                    <i class="bi bi-search"></i>
-                </button>
-                <ul class="navbar-nav">
-                    <?php
-                    if (!isset($_SESSION['user_id'])) {
-                        echo '<li class="nav-item"><a class="nav-link btn-login" href="login.php">Login</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link btn-register" href="register.php">Register</a></li>';
-                    } else {
-                        echo '<li class="nav-item"><span class="welcome-text"><i class="bi bi-person-circle"></i> Welcome, ' . htmlspecialchars($_SESSION['username']) . '</span></li>';
-                        echo '<li class="nav-item"><a class="nav-link btn-login" href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php include 'navbar.php'; ?>
 
-
-<div class="container mt-5">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow">
@@ -242,18 +183,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <form action="login.php" method="POST">
                        
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">
+                                <i class="bi bi-person me-2"></i>Username
+                            </label>
                             <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">
+                                <i class="bi bi-lock me-2"></i>Password
+                            </label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                        
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </button>
                     </form>
-                   
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="register.php"><i class="bi bi-person-plus me-1"></i>Register here</a></p>
+                    </div>
                 </div>
             </div>
         </div>

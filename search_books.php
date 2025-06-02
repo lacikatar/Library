@@ -26,8 +26,14 @@ if (isset($_GET['query']) && strlen($_GET['query']) >= 4) {
     INNER JOIN wrote w ON b.isbn = w.isbn
     INNER JOIN author a ON a.author_id = w.author_id
     WHERE b.Title LIKE :query
+    OR a.Name LIKE :query
     GROUP BY b.isbn, b.Title, b.Image_URL
-    ORDER BY b.Title ASC
+    ORDER BY 
+        CASE 
+            WHEN b.Title LIKE :query THEN 1
+            ELSE 2
+        END,
+        b.Title ASC
     LIMIT 10";
     
     try {

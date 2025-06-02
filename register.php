@@ -41,6 +41,7 @@ $memberID = $conn->lastInsertId(); // ✅ Corrected
 <head>
     <title>Register - Alexandria's Haven</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #E6D5C3;
@@ -54,31 +55,7 @@ $memberID = $conn->lastInsertId(); // ✅ Corrected
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="search.php">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="categories.php">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
+<?php include 'navbar.php'; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -90,29 +67,41 @@ $memberID = $conn->lastInsertId(); // ✅ Corrected
                 <div class="card-body">
                     <form action="register.php" method="POST">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">
+                                <i class="bi bi-person-badge me-2"></i>Name
+                            </label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">
+                                <i class="bi bi-person me-2"></i>Username
+                            </label>
                             <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
+                            <label for="email" class="form-label">
+                                <i class="bi bi-envelope me-2"></i>Email address
+                            </label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">
+                                <i class="bi bi-lock me-2"></i>Password
+                            </label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="mb-3">
-                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <label for="confirm_password" class="form-label">
+                                <i class="bi bi-lock-fill me-2"></i>Confirm Password
+                            </label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-person-plus me-2"></i>Register
+                        </button>
                     </form>
                     <div class="text-center mt-3">
-                        <p>Already have an account? <a href="login.php">Login here</a></p>
+                        <p>Already have an account? <a href="login.php"><i class="bi bi-box-arrow-in-right me-1"></i>Login here</a></p>
                     </div>
                 </div>
             </div>
