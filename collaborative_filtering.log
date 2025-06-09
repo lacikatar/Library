@@ -20,3 +20,16 @@
 2025-05-30 00:47:12,438 - WARNING - User 4 not found in similarity matrix
 2025-05-30 18:48:42,390 - WARNING - User 3 not found in similarity matrix
 2025-05-30 18:48:42,533 - WARNING - User 4 not found in similarity matrix
+2025-06-07 23:24:48,660 - WARNING - User 3 not found in similarity matrix
+2025-06-07 23:24:48,865 - WARNING - User 4 not found in similarity matrix
+2025-06-07 23:29:07,355 - WARNING - User 3 not found in similarity matrix
+2025-06-07 23:43:35,615 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-07 23:46:22,190 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-07 23:51:36,186 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 15:23:03,118 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:06:43,087 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:15:13,942 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:22:44,812 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:24:20,356 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:24:30,548 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-08 16:26:21,523 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>

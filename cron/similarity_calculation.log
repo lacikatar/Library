@@ -663,3 +663,15 @@ Finished processing. Total books processed: 101, Total similarities added: 267
 2025-05-23 19:21:20,541 - INFO - Stored batch 3 of 3
 2025-05-23 19:21:20,541 - INFO - Similarities stored in database
 2025-05-23 19:21:20,556 - INFO - Process completed in 0.85 seconds
+2025-06-08 15:36:02,645 - INFO - Starting similarity calculation
+2025-06-08 15:36:02,677 - INFO - Database connection established
+2025-06-08 15:36:02,752 - INFO - Retrieved 251 books
+2025-06-08 15:36:02,841 - INFO - Processing batch 1 of 3
+2025-06-08 15:36:03,023 - INFO - Processing batch 2 of 3
+2025-06-08 15:36:03,119 - INFO - Processing batch 3 of 3
+2025-06-08 15:36:03,135 - INFO - Calculated 2138 similarity pairs
+2025-06-08 15:36:03,389 - INFO - Stored batch 1 of 3
+2025-06-08 15:36:03,455 - INFO - Stored batch 2 of 3
+2025-06-08 15:36:03,466 - INFO - Stored batch 3 of 3
+2025-06-08 15:36:03,468 - INFO - Similarities stored in database
+2025-06-08 15:36:03,468 - INFO - Process completed in 0.82 seconds

@@ -31,7 +31,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     ]);
 
 // Get the last inserted ID
-$memberID = $conn->lastInsertId(); // ✅ Corrected
+$memberID = $conn->lastInsertId();
+
+// Create default reading lists
+$defaultLists = [
+    'Currently Reading',
+    'Read',
+    'Want to Read',
+    'DNF'
+];
+
+foreach ($defaultLists as $listName) {
+    $listSql = "INSERT INTO reading_list (Member_ID, Name) VALUES (:member_id, :name)";
+    $listStmt = $conn->prepare($listSql);
+    $listStmt->execute([
+        ':member_id' => $memberID,
+        ':name' => $listName
+    ]);
+}
 }
 
 

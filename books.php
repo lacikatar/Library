@@ -19,7 +19,7 @@ $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'title';
 $sort_order = isset($_GET['order']) ? $_GET['order'] : 'asc';
 $availability = isset($_GET['availability']) ? $_GET['availability'] : '';
 
-$books_per_page = 16;
+$books_per_page = 12;
 $offset = ($page - 1) * $books_per_page;
 
 // Get sorting

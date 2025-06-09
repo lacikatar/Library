@@ -212,6 +212,16 @@ if ($isbn) {
         $newStatus = $_POST['update_status'];
         
         try {
+            $conn->beginTransaction();
+            
+            // Remove from all reading lists first
+            $stmt = $conn->prepare("
+                DELETE rlb FROM reading_list_book rlb
+                JOIN reading_list rl ON rlb.List_ID = rl.List_ID
+                WHERE rl.Member_ID = ? AND rlb.ISBN = ?
+            ");
+            $stmt->execute([$_SESSION['user_id'], $isbn]);
+            
             if ($newStatus === 'remove') {
                 // Remove status
                 $stmt = $conn->prepare("
@@ -219,20 +229,41 @@ if ($isbn) {
                     WHERE Member_ID = ? AND ISBN = ?
                 ");
                 $stmt->execute([$_SESSION['user_id'], $isbn]);
-                logUserActivity($_SESSION['user_id'], $isbn, 'Removed Status', $conn);
             } else {
-                // Update or insert status
-                $stmt = $conn->prepare("
-                    INSERT INTO user_book_status (Member_ID, ISBN, Status)
-                    VALUES (?, ?, ?)
-                    ON DUPLICATE KEY UPDATE Status = ?
+                // Get the reading list ID for the new status
+                $listStmt = $conn->prepare("
+                    SELECT List_ID FROM reading_list 
+                    WHERE Member_ID = ? AND Name = ?
                 ");
-                $stmt->execute([$_SESSION['user_id'], $isbn, $newStatus, $newStatus]);
-                logUserActivity($_SESSION['user_id'], $isbn, 'Added to List', $conn);
+                $listStmt->execute([$_SESSION['user_id'], $newStatus]);
+                $listId = $listStmt->fetchColumn();
+                
+                if ($listId) {
+                    // Add to the corresponding reading list
+                    $stmt = $conn->prepare("
+                        INSERT IGNORE INTO reading_list_book (List_ID, ISBN)
+                        VALUES (?, ?)
+                    ");
+                    $stmt->execute([$listId, $isbn]);
+                    
+                    // For DNF status, store it as 'Read' in the database
+                    $dbStatus = ($newStatus === 'DNF') ? 'Read' : $newStatus;
+                    
+                    // Update or insert status
+                    $stmt = $conn->prepare("
+                        INSERT INTO user_book_status (Member_ID, ISBN, Status)
+                        VALUES (?, ?, ?)
+                        ON DUPLICATE KEY UPDATE Status = ?
+                    ");
+                    $stmt->execute([$_SESSION['user_id'], $isbn, $dbStatus, $dbStatus]);
+                }
             }
             
+            logUserActivity($_SESSION['user_id'], $isbn, 'Added to List', $conn);
+            $conn->commit();
             echo "<script>window.location.href='book_details.php?isbn=$isbn';</script>";
         } catch (Exception $e) {
+            $conn->rollBack();
             echo "<script>alert('Error updating status: " . addslashes($e->getMessage()) . "');window.location.href='book_details.php?isbn=$isbn';</script>";
         }
         exit;
@@ -428,6 +459,46 @@ if ($isbn) {
             border-color: #8B7355;
             box-shadow: 0 0 0 0.2rem rgba(139, 115, 85, 0.25);
         }
+        .similar-books-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .similar-books-container::-webkit-scrollbar {
+            display: none;
+        }
+        .similar-book-card {
+            flex: 0 0 200px;
+            width: 200px;
+        }
+        .similar-book-card .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .similar-book-card .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .similar-book-card .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .similar-book-card .card-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .similar-book-card .card-text {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -455,6 +526,19 @@ if ($isbn) {
                             ");
                             $statusStmt->execute([$_SESSION['user_id'], $isbn]);
                             $currentStatus = $statusStmt->fetchColumn();
+                            
+                            // Check if this is a DNF book (stored as 'Read' in DB but shown as DNF)
+                            $isDNF = false;
+                            if ($currentStatus === 'Read') {
+                                $listStmt = $conn->prepare("
+                                    SELECT rl.Name
+                                    FROM reading_list rl
+                                    JOIN reading_list_book rlb ON rl.List_ID = rlb.List_ID
+                                    WHERE rl.Member_ID = ? AND rlb.ISBN = ? AND rl.Name = 'DNF'
+                                ");
+                                $listStmt->execute([$_SESSION['user_id'], $isbn]);
+                                $isDNF = $listStmt->rowCount() > 0;
+                            }
                             ?>
                             <form method="POST" class="status-form">
                                 <div class="d-grid gap-2">
@@ -467,11 +551,11 @@ if ($isbn) {
                                         <i class="bi bi-book me-2"></i>Currently Reading
                                     </button>
                                     <button type="submit" name="update_status" value="Read" 
-                                            class="btn <?= $currentStatus === 'Read' ? 'btn-info' : 'btn-outline-info' ?> btn-custom">
+                                            class="btn <?= ($currentStatus === 'Read' && !$isDNF) ? 'btn-info' : 'btn-outline-info' ?> btn-custom">
                                         <i class="bi bi-check-circle me-2"></i>Read
                                     </button>
                                     <button type="submit" name="update_status" value="DNF" 
-                                            class="btn <?= $currentStatus === 'DNF' ? 'btn-danger' : 'btn-outline-danger' ?> btn-custom">
+                                            class="btn <?= $isDNF ? 'btn-danger' : 'btn-outline-danger' ?> btn-custom">
                                         <i class="bi bi-x-circle me-2"></i>Did Not Finish
                                     </button>
                                     <?php if ($currentStatus): ?>
@@ -713,17 +797,101 @@ if ($isbn) {
                 </div>
             </div>
         </div>
-    <?php else: ?>
-        <div class="alert alert-danger">
-            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-            Book not found!
-        </div>
-    <?php endif; ?>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
+        <!-- Similar Books Section -->
+        <div class="mt-5">
+            <div class="book-info">
+                <h3 class="mb-4">Similar Books</h3>
+                <div class="position-relative">
+                    <div class="similar-books-container d-flex" style="overflow: hidden;">
+                        <?php
+                        // Get similar books
+                        $similarStmt = $conn->prepare("
+                            SELECT b.ISBN, b.Title, b.Image_URL,
+                                   GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
+                                   bs.Similarity_Score
+                            FROM book_similarity bs
+                            JOIN book b ON bs.ISBN_2 = b.ISBN
+                            LEFT JOIN wrote w ON b.ISBN = w.ISBN
+                            LEFT JOIN author a ON w.Author_ID = a.Author_ID
+                            WHERE bs.ISBN_1 = ?
+                            GROUP BY b.ISBN, b.Title, b.Image_URL, bs.Similarity_Score
+                            ORDER BY bs.Similarity_Score DESC
+                            LIMIT 10
+                        ");
+                        $similarStmt->execute([$isbn]);
+                        $similarBooks = $similarStmt->fetchAll(PDO::FETCH_ASSOC);
+                        
+                        if (!empty($similarBooks)):
+                            foreach ($similarBooks as $similarBook):
+                        ?>
+                            <div class="similar-book-card me-3" style="min-width: 200px; flex-shrink: 0;">
+                                <div class="card h-100">
+                                    <a href="book_details.php?isbn=<?= urlencode($similarBook['ISBN']) ?>" class="text-decoration-none">
+                                        <img src="<?= htmlspecialchars($similarBook['Image_URL'] ?? 'default_cover.jpg') ?>" 
+                                             class="card-img-top" 
+                                             alt="<?= htmlspecialchars($similarBook['Title']) ?>"
+                                             style="height: 250px; object-fit: cover;">
+                                    </a>
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate"><?= htmlspecialchars($similarBook['Title']) ?></h6>
+                                        <p class="card-text small text-muted text-truncate">By <?= htmlspecialchars($similarBook['authors']) ?></p>
+                                        <p class="card-text small text-muted">
+                                            Similarity: <?= number_format($similarBook['Similarity_Score'] * 100, 1) ?>%
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php 
+                            endforeach;
+                        else:
+                        ?>
+                            <div class="alert alert-info w-100">
+                                No similar books found.
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <button class="btn btn-light position-absolute start-0 top-50 translate-middle-y rounded-circle shadow" 
+                            onclick="scrollSimilarBooks('left')" 
+                            style="z-index: 1;">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-light position-absolute end-0 top-50 translate-middle-y rounded-circle shadow" 
+                            onclick="scrollSimilarBooks('right')" 
+                            style="z-index: 1;">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        Book not found!
+    </div>
+<?php endif; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function scrollSimilarBooks(direction) {
+            const container = document.querySelector('.similar-books-container');
+            const scrollAmount = 400; // Adjust this value to control scroll distance
+            
+            if (direction === 'left') {
+                container.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            } else {
+                container.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+    document.addEventListener('DOMContentLoaded', function() {
     const ratingInputs = document.querySelectorAll('.rating-stars input');
     const starLabels = document.querySelectorAll('.star-label');
     
@@ -774,7 +942,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-</script>
+    </script>
 </body>
 </html>
 

@@ -1,0 +1,25 @@
+2025-06-08 23:43:17,164 - INFO - Starting similarity calculation
+2025-06-08 23:43:17,294 - INFO - Database connection established
+2025-06-08 23:43:17,403 - INFO - Retrieved 251 books
+2025-06-08 23:43:18,132 - INFO - Calculated 1641 similarity pairs
+2025-06-08 23:43:18,497 - INFO - Stored batch 1 of 2
+2025-06-08 23:43:18,545 - INFO - Stored batch 2 of 2
+2025-06-08 23:43:18,545 - INFO - Similarities stored in database
+2025-06-08 23:43:18,545 - INFO - Process completed in 1.38 seconds
+2025-06-08 23:45:07,895 - INFO - Starting similarity calculation
+2025-06-08 23:45:07,977 - INFO - Database connection established
+2025-06-08 23:45:08,021 - INFO - Retrieved 251 books
+2025-06-08 23:45:08,530 - INFO - Calculated 1641 similarity pairs
+2025-06-08 23:45:08,664 - INFO - Stored batch 1 of 2
+2025-06-08 23:45:08,719 - INFO - Stored batch 2 of 2
+2025-06-08 23:45:08,720 - INFO - Similarities stored in database
+2025-06-08 23:45:08,721 - INFO - Process completed in 0.83 seconds
+2025-06-08 23:48:12,162 - INFO - Starting similarity calculation
+2025-06-08 23:48:12,246 - INFO - Database connection established
+2025-06-08 23:48:12,278 - INFO - Retrieved 251 books
+2025-06-08 23:48:12,842 - INFO - Calculated 2510 similarity pairs
+2025-06-08 23:48:12,967 - INFO - Stored batch 1 of 3
+2025-06-08 23:48:13,030 - INFO - Stored batch 2 of 3
+2025-06-08 23:48:13,046 - INFO - Stored batch 3 of 3
+2025-06-08 23:48:13,046 - INFO - Similarities stored in database
+2025-06-08 23:48:13,046 - INFO - Process completed in 0.88 seconds

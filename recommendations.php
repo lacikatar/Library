@@ -32,89 +32,73 @@ $recommendations = [];
 $total_recommendations = 0;
 
 if ($method === 'hybrid') {
-    // Execute Python script for hybrid recommendations
-    $command = "python hybrid_recommendations.py";
-    $output = shell_exec($command);
+    // Get hybrid recommendations from the database
+    $stmt = $conn->prepare("
+        SELECT b.ISBN, b.Title, b.Image_URL,
+               GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
+               r.Score as recommendation_score
+        FROM recommendations r
+        JOIN book b ON r.ISBN = b.ISBN
+        LEFT JOIN wrote w ON b.ISBN = w.ISBN
+        LEFT JOIN author a ON w.Author_ID = a.Author_ID
+        WHERE r.Member_ID = :user_id
+        GROUP BY b.ISBN, b.Title, b.Image_URL, r.Score
+        ORDER BY r.Score DESC
+        LIMIT :limit OFFSET :offset
+    ");
     
-    // Parse the output to get recommendations for current user
-    $lines = explode("\n", $output);
-    $current_user = false;
-    $user_recommendations = [];
+    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $books_per_page, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     
-    foreach ($lines as $line) {
-        if (strpos($line, "Hybrid Recommendations for " . $_SESSION['username']) !== false) {
-            $current_user = true;
-            continue;
-        }
-        if ($current_user && strpos($line, "====") !== false) {
-            $current_user = false;
-            continue;
-        }
-        if ($current_user && preg_match('/^\d+\.\s+(.+?)\s+by\s+(.+?)$/', $line, $matches)) {
-            // Get book details including cover
-            $stmt = $conn->prepare("
-                SELECT b.ISBN, b.Image_URL
-                FROM book b
-                WHERE b.Title = :title
-                LIMIT 1
-            ");
-            $stmt->execute(['title' => $matches[1]]);
-            $book_details = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $user_recommendations[] = [
-                'ISBN' => $book_details['ISBN'] ?? '',
-                'title' => $matches[1],
-                'authors' => $matches[2],
-                'Image_URL' => $book_details['Image_URL'] ?? 'default_cover.jpg'
-            ];
-        }
-    }
+    $recommendations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Limit to 12 recommendations
-    $recommendations = array_slice($user_recommendations, 0, 12);
-    $total_recommendations = count($recommendations);
+    // Get total count for pagination
+    $countStmt = $conn->prepare("
+        SELECT COUNT(*) 
+        FROM recommendations 
+        WHERE Member_ID = :user_id
+    ");
+    $countStmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $countStmt->execute();
+    $total_recommendations = $countStmt->fetchColumn();
+    
+    $total_pages = ceil($total_recommendations / $books_per_page);
 } elseif ($method === 'collaborative') {
-    // Execute Python script for collaborative filtering
-    $command = "python collaborative_filtering.py";
-    $output = shell_exec($command);
+    // Get collaborative recommendations from the database
+    $stmt = $conn->prepare("
+        SELECT b.ISBN, b.Title, b.Image_URL,
+               GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
+               cr.Score as recommendation_score
+        FROM collab_recommendations cr
+        JOIN book b ON cr.ISBN = b.ISBN
+        LEFT JOIN wrote w ON b.ISBN = w.ISBN
+        LEFT JOIN author a ON w.Author_ID = a.Author_ID
+        WHERE cr.Member_ID = :user_id
+        GROUP BY b.ISBN, b.Title, b.Image_URL, cr.Score
+        ORDER BY cr.Score DESC
+        LIMIT :limit OFFSET :offset
+    ");
     
-    // Parse the output similar to hybrid
-    $lines = explode("\n", $output);
-    $current_user = false;
-    $user_recommendations = [];
+    $stmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $books_per_page, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     
-    foreach ($lines as $line) {
-        if (strpos($line, "Recommendations for " . $_SESSION['username']) !== false) {
-            $current_user = true;
-            continue;
-        }
-        if ($current_user && strpos($line, "====") !== false) {
-            $current_user = false;
-            continue;
-        }
-        if ($current_user && preg_match('/^\d+\.\s+(.+?)\s+by\s+(.+?)$/', $line, $matches)) {
-            // Get book details including cover
-            $stmt = $conn->prepare("
-                SELECT b.ISBN, b.Image_URL
-                FROM book b
-                WHERE b.Title = :title
-                LIMIT 1
-            ");
-            $stmt->execute(['title' => $matches[1]]);
-            $book_details = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $user_recommendations[] = [
-                'ISBN' => $book_details['ISBN'] ?? '',
-                'title' => $matches[1],
-                'authors' => $matches[2],
-                'Image_URL' => $book_details['Image_URL'] ?? 'default_cover.jpg'
-            ];
-        }
-    }
+    $recommendations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Limit to 12 recommendations
-    $recommendations = array_slice($user_recommendations, 0, 12);
-    $total_recommendations = count($recommendations);
+    // Get total count for pagination
+    $countStmt = $conn->prepare("
+        SELECT COUNT(*) 
+        FROM collab_recommendations 
+        WHERE Member_ID = :user_id
+    ");
+    $countStmt->bindValue(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $countStmt->execute();
+    $total_recommendations = $countStmt->fetchColumn();
+    
+    $total_pages = ceil($total_recommendations / $books_per_page);
 } else {
     // Content-based recommendations
     $stmt = $conn->prepare("
@@ -319,6 +303,11 @@ $total_pages = 1;
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($book['Title']); ?></h5>
                                 <p class="card-text">By <?php echo htmlspecialchars($book['authors']); ?></p>
+                                <?php if (isset($book['recommendation_score'])): ?>
+                                    <p class="card-text">
+                                        <small class="text-muted">Recommendation Score: <?php echo number_format($book['recommendation_score'], 2); ?></small>
+                                    </p>
+                                <?php endif; ?>
                                 <?php if (isset($book['avg_similarity'])): ?>
                                     <p class="card-text">
                                         <small class="text-muted">Similarity Score: <?php echo number_format($book['avg_similarity'], 2); ?></small>
