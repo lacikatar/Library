@@ -385,70 +385,18 @@ $stmt->execute();
             background-color: #eee;
             margin: 0.5rem 0;
         }
+        .section-title {
+            color: #8B7355;
+            border-bottom: 2px solid #8B7355;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.php">
-            <i class="bi bi-book"></i> Laci's Library
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-grid-3x3-gap"></i> Catalogue
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="books.php"><i class="bi bi-book"></i> Books</a></li>
-                        <li><a class="dropdown-item" href="authors.php"><i class="bi bi-person"></i> Authors</a></li>
-                        <li><a class="dropdown-item" href="categories.php"><i class="bi bi-tags"></i> Categories</a></li>
-                        <li><a class="dropdown-item" href="book_series.php"><i class="bi bi-collection"></i> Book Series</a></li>
-                    </ul>
-                </li>
-                <?php
-                if (isset($_SESSION['user_id'])) {
-                    echo '<li class="nav-item dropdown">';
-                    echo '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">';
-                    echo '<i class="bi bi-person-circle"></i> My Library';
-                    echo '</a>';
-                    echo '<ul class="dropdown-menu">';
-                    echo '<li><a class="dropdown-item" href="reading-lists.php"><i class="bi bi-list-check"></i> Reading Lists</a></li>';
-                    echo '<li><a class="dropdown-item" href="borrowed.php"><i class="bi bi-bookmark"></i> Borrowed Books</a></li>';
-                    echo '<li><a class="dropdown-item" href="read.php"><i class="bi bi-check-circle"></i> Read Books</a></li>';
-                    echo '<li><a class="dropdown-item" href="recommendations.php"><i class="bi bi-stars"></i> Recommendations</a></li>';
-                    echo '</ul>';
-                    echo '</li>';
-                }
-                ?>
-            </ul>
-            <div class="d-flex align-items-center">
-                <div class="search-container">
-                    <input type="text" class="form-control search-input" id="searchInput" placeholder="Search books...">
-                    <div class="search-results" id="searchResults"></div>
-                </div>
-                <button class="btn btn-link text-light ms-2 search-toggle" id="searchToggle">
-                    <i class="bi bi-search"></i>
-                </button>
-                <ul class="navbar-nav">
-                    <?php
-                    if (!isset($_SESSION['user_id'])) {
-                        echo '<li class="nav-item"><a class="nav-link btn-login" href="login.php">Login</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link btn-register" href="register.php">Register</a></li>';
-                    } else {
-                        echo '<li class="nav-item"><span class="welcome-text"><i class="bi bi-person-circle"></i> Welcome, ' . htmlspecialchars($_SESSION['username']) . '</span></li>';
-                        echo '<li class="nav-item"><a class="nav-link btn-login" href="logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a></li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php include 'navbar.php'; ?>
 <div class="container mt-4">
+    <h2 class="section-title">Books</h2>
     <div class="d-flex justify-content-end mb-4">
         <div class="sort-dropdown">
             <button class="sort-btn" onclick="toggleSortOptions()">
@@ -537,7 +485,7 @@ $stmt->execute();
         // Previous button
         $prev_disabled = $page <= 1 ? 'disabled' : '';
         echo '<li class="page-item ' . $prev_disabled . '">';
-        echo '<a class="page-link" href="?page=' . ($page - 1) . '" aria-label="Previous">';
+        echo '<a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $page - 1])) . '" aria-label="Previous">';
         echo '<span aria-hidden="true">&laquo;</span>';
         echo '</a></li>';
         
@@ -546,7 +494,7 @@ $stmt->execute();
         $end_page = min($total_pages, $page + 2);
         
         if ($start_page > 1) {
-            echo '<li class="page-item"><a class="page-link" href="?page=1">1</a></li>';
+            echo '<li class="page-item"><a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => 1])) . '">1</a></li>';
             if ($start_page > 2) {
                 echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
             }
@@ -555,7 +503,7 @@ $stmt->execute();
         for ($i = $start_page; $i <= $end_page; $i++) {
             $active = $i == $page ? 'active' : '';
             echo '<li class="page-item ' . $active . '">';
-            echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
+            echo '<a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $i])) . '">' . $i . '</a>';
             echo '</li>';
         }
         
@@ -563,13 +511,13 @@ $stmt->execute();
             if ($end_page < $total_pages - 1) {
                 echo '<li class="page-item disabled"><span class="page-link">...</span></li>';
             }
-            echo '<li class="page-item"><a class="page-link" href="?page=' . $total_pages . '">' . $total_pages . '</a></li>';
+            echo '<li class="page-item"><a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $total_pages])) . '">' . $total_pages . '</a></li>';
         }
         
         // Next button
         $next_disabled = $page >= $total_pages ? 'disabled' : '';
         echo '<li class="page-item ' . $next_disabled . '">';
-        echo '<a class="page-link" href="?page=' . ($page + 1) . '" aria-label="Next">';
+        echo '<a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $page + 1])) . '" aria-label="Next">';
         echo '<span aria-hidden="true">&raquo;</span>';
         echo '</a></li>';
         
@@ -585,66 +533,7 @@ $stmt->execute();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const searchToggle = document.getElementById('searchToggle');
-    const searchContainer = document.querySelector('.search-container');
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    let searchTimeout;
 
-    searchToggle.addEventListener('click', function() {
-        searchContainer.classList.toggle('active');
-        if (searchContainer.classList.contains('active')) {
-            searchInput.focus();
-        }
-    });
-
-    searchInput.addEventListener('input', function() {
-        clearTimeout(searchTimeout);
-        const query = this.value.trim();
-        
-        if (query.length < 4) {
-            searchResults.classList.remove('active');
-            return;
-        }
-
-        searchTimeout = setTimeout(() => {
-            fetch('search_books.php?query=' + encodeURIComponent(query))
-                .then(response => response.json())
-                .then(data => {
-                    searchResults.innerHTML = '';
-                    if (data.length > 0) {
-                        data.forEach(book => {
-                            const div = document.createElement('div');
-                            div.className = 'search-result-item d-flex align-items-center';
-                            div.innerHTML = `
-                                <img src="${book.Image_URL || 'default_cover.jpg'}" alt="${book.Title}">
-                                <div>
-                                    <div class="fw-bold">${book.Title}</div>
-                                    <div class="small text-muted">${book.authors}</div>
-                                </div>
-                            `;
-                            div.addEventListener('click', () => {
-                                window.location.href = 'book_details.php?isbn=' + book.ISBN;
-                            });
-                            searchResults.appendChild(div);
-                        });
-                        searchResults.classList.add('active');
-                    } else {
-                        searchResults.innerHTML = '<div class="p-3 text-center">No results found</div>';
-                        searchResults.classList.add('active');
-                    }
-                });
-        }, 300);
-    });
-
-    // Close search results when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target)) {
-            searchResults.classList.remove('active');
-        }
-    });
-});
 
 function toggleSortOptions() {
     const sortOptions = document.getElementById('sortOptions');

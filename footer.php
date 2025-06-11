@@ -1,5 +1,5 @@
 <?php
-// Get current year for copyright
+
 $currentYear = date('Y');
 ?>
 

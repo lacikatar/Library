@@ -272,12 +272,19 @@ $total_pages = 1;
             color: #ccc;
             pointer-events: none;
         }
+        .section-title {
+            color: #8B7355;
+            border-bottom: 2px solid #8B7355;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body>
     <?php include 'navbar.php'; ?>
-
+    
     <div class="container mt-4">
+        <h2 class="section-title">Recommendations</h2>
         <div class="filter-section">
             <h3 class="filter-title">Recommendation Method</h3>
             <div class="d-flex gap-2">

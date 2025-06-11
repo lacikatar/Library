@@ -8,17 +8,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-grid-3x3-gap"></i> Catalogue
+                <li class="nav-item">
+                    <a class="nav-link" href="books.php">
+                        <i class="bi bi-book"></i> Books
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="books.php"><i class="bi bi-book"></i> Books</a></li>
-                        <li><a class="dropdown-item" href="authors.php"><i class="bi bi-person"></i> Authors</a></li>
-                        <li><a class="dropdown-item" href="categories.php"><i class="bi bi-tags"></i> Categories</a></li>
-                        <li><a class="dropdown-item" href="book_series.php"><i class="bi bi-collection"></i> Book Series</a></li>
-                    </ul>
                 </li>
+               
                 <?php
                 if (isset($_SESSION['user_id'])) {
                     echo '<li class="nav-item dropdown">';
@@ -28,7 +23,6 @@
                     echo '<ul class="dropdown-menu">';
                     echo '<li><a class="dropdown-item" href="reading-lists.php"><i class="bi bi-list-check"></i> Reading Lists</a></li>';
                     echo '<li><a class="dropdown-item" href="borrowed.php"><i class="bi bi-bookmark"></i> Borrowed Books</a></li>';
-                    echo '<li><a class="dropdown-item" href="read.php"><i class="bi bi-check-circle"></i> Read Books</a></li>';
                     echo '<li><a class="dropdown-item" href="recommendations.php"><i class="bi bi-stars"></i> Recommendations</a></li>';
                     echo '</ul>';
                     echo '</li>';
