@@ -62,6 +62,8 @@ def calculate_text_similarity(books):
     ]
     vectorizer = TfidfVectorizer(stop_words='english')
     tfidf_matrix = vectorizer.fit_transform(text_blob)
+    #logging.info(f"TF-IDF matrix shape: {tfidf_matrix.shape}")  
+    #logging.info(f"TF-IDF matrix: {tfidf_matrix}")
     return cosine_similarity(tfidf_matrix)
 
 def calculate_similarities(books):
@@ -101,7 +103,7 @@ def calculate_similarities(books):
 
             total_sim = series_sim + desc_sim + author_sim + cat_sim + tag_sim
 
-            #if total_sim > 0.2:
+            
             sim_list.append((book2['ISBN'], total_sim))
 
         # Keep only top 10 similar books

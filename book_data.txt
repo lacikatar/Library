@@ -1,13 +1,13 @@
 
 --------------------------------------------------
-Title: And Then There Were None
-Author: Agatha Christie
+Title: Blood Over Bright Haven
+Author: M.L. Wang
 Series: Standalone
-ISBN: 9780312330873
-Publisher: St. Martin's Griffin
-Release Year: 1939
-Categories: ['Mystery', 'Fiction', 'Thriller', 'Crime', 'Mystery Thriller', 'Classics']
-Tags: ['Book Club']
-Page Count: 264
-Image_URL: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1638425885i/16299.jpg
-Description: First, there were ten—a curious assortment of strangers summoned as weekend guests to a little private island off the coast of Devon. Their host, an eccentric millionaire unknown to all of them, is nowhere to be found. All that the guests have in common is a wicked past they're unwilling to reveal—and a secret that will seal their fate. For each has been marked for murder. A famous nursery rhyme is framed and hung in every room of the mansion: "Ten little boys went out to dine; One choked his little self and then there were nine. Nine little boys sat up very late; One overslept himself and then there were eight. Eight little boys traveling in Devon; One said he'd stay there then there were seven. Seven little boys chopping up sticks; One chopped himself in half and then there were six. Six little boys playing with a hive; A bumblebee stung one and then there were five. Five little boys going in for law; One got in Chancery and then there were four. Four little boys going out to sea; A red herring swallowed one and then there were three. Three little boys walking in the zoo; A big bear hugged one and then there were two. Two little boys sitting in the sun; One got frizzled up and then there was one. One little boy left all alone; He went out and hanged himself and then there were none." When they realize that murders are occurring as described in the rhyme, terror mounts. One by one they fall prey. Before the weekend is out, there will be none. Who has choreographed this dastardly scheme? And who will be left to tell the tale? Only the dead are above suspicion.
+ISBN: 9780593873359
+Publisher: Del Rey
+Release Year: 2023
+Categories: ['Fantasy', 'Fiction', 'Adult', 'Audiobook']
+Categories: [ 'Dark Academia', 'Magic', 'High Fantasy']
+Page Count: 430
+Image_URL: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1717354584i/208430658.jpg
+Description: Magic has made the city of Tiran an industrial utopia, but magic has a cost—and the collectors have come calling. An orphan since the age of four, Sciona has always had more to prove than her fellow students. For twenty years, she has devoted every waking moment to the study of magic, fueled by a mad desire to achieve the impossible: to be the first woman ever admitted to the High Magistry. When she finally claws her way up the ranks to become a highmage, however, she finds that her challenges have just begun. Her new colleagues will stop at nothing to let her know she is unwelcome, beginning with giving her a janitor instead of a qualified lab assistant. What neither Sciona nor her peers realize is that her taciturn assistant was once more than a janitor; before he mopped floors for the mages, Thomil was a nomadic hunter from beyond Tiran’s magical barrier. Ten years have passed since he survived the perilous crossing that killed his family. But working for a highmage, he sees the opportunity to finally understand the forces that decimated his tribe, drove him from his homeland, and keep the Tiranish in power. Through their fractious relationship, mage and outsider uncover an ancient secret that could change the course of magic forever—if it doesn’t get them killed first. Sciona has defined her life by the pursuit of truth, but how much is one truth worth with the fate of civilization in the balance? A standalone dark academia brimming with mystery, tragedy, and the damning echoes of the past. For fans of Leigh Bardugo, V. E. Schwab, and Fullmetal Alchemist. (Content warnings for gore, sexual assault, and suicidal ideation)

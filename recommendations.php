@@ -102,23 +102,29 @@ if ($method === 'hybrid') {
 } else {
     // Content-based recommendations
     $stmt = $conn->prepare("
-        SELECT DISTINCT b.ISBN, b.Title, b.Image_URL,
-               GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
-               AVG(bs.Similarity_Score) as avg_similarity
-        FROM book b
-        INNER JOIN wrote w ON b.ISBN = w.ISBN
-        INNER JOIN author a ON w.Author_ID = a.Author_ID
-        INNER JOIN book_similarity bs ON b.ISBN = bs.ISBN_2
-        INNER JOIN user_book_status ubs ON bs.ISBN_1 = ubs.ISBN
-        WHERE ubs.Member_ID = :user_id
-        AND ubs.Status = 'Read'
-        AND b.ISBN NOT IN (
-            SELECT ISBN 
-            FROM user_book_status 
-            WHERE Member_ID = :user_id 
-            AND Status = 'Read'
+        WITH weighted_scores AS (
+            SELECT b.ISBN, b.Title, b.Image_URL,
+                   GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
+                   AVG(bs.Similarity_Score * COALESCE(r.Rating, 1)) as raw_score
+            FROM book b
+            INNER JOIN wrote w ON b.ISBN = w.ISBN
+            INNER JOIN author a ON w.Author_ID = a.Author_ID
+            INNER JOIN book_similarity bs ON b.ISBN = bs.ISBN_2
+            INNER JOIN user_book_status ubs ON bs.ISBN_1 = ubs.ISBN
+            LEFT JOIN review r ON bs.ISBN_1 = r.ISBN AND r.Member_ID = :user_id
+            WHERE ubs.Member_ID = :user_id
+            AND ubs.Status = 'Read'
+            AND b.ISBN NOT IN (
+                SELECT ISBN 
+                FROM user_book_status 
+                WHERE Member_ID = :user_id 
+                AND Status = 'Read'
+            )
+            GROUP BY b.ISBN, b.Title, b.Image_URL
         )
-        GROUP BY b.ISBN, b.Title, b.Image_URL
+        SELECT ISBN, Title, Image_URL, authors,
+               raw_score / (SELECT MAX(raw_score) FROM weighted_scores) as avg_similarity
+        FROM weighted_scores
         ORDER BY avg_similarity DESC
         LIMIT 12
     ");
