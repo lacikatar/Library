@@ -81,6 +81,8 @@ $stmt->execute();
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Books - Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { 
@@ -221,6 +223,7 @@ $stmt->execute();
             background-color: transparent;
             border-top: 1px solid rgba(0,0,0,0.05);
             padding: 1rem 1.5rem;
+            
         }
         .search-container {
             position: relative;
@@ -471,7 +474,7 @@ $stmt->execute();
             // Card footer with link
             echo '<div class="card-footer">';
             echo '<a href="book_details.php?isbn=' . urlencode($row['ISBN']) . '" 
-                      class="btn btn-primary w-100">View Details</a>';
+                      class="btn btn-primary w-100" style="background-color: #8B7355; border-color: #8B7355;">View Details</a>';
             echo '</div>';
             
             echo '</div></div>';

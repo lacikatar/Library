@@ -36,3 +36,5 @@
 2025-06-10 15:05:00,992 - ERROR - Error fetching user interactions: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
 2025-06-10 15:05:00,992 - ERROR - Error getting recommendations: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
 2025-06-10 15:05:00,992 - ERROR - Error printing recommendations: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
+2025-06-12 13:59:11,656 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+2025-06-12 14:03:11,940 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>

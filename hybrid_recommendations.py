@@ -261,6 +261,7 @@ class HybridRecommender:
            
             cursor.close()
             conn.close()
+            logging.info("Ok")
             
         except Exception as e:
             logging.error(f"Error printing recommendations: {str(e)}")
@@ -269,3 +270,4 @@ class HybridRecommender:
 if __name__ == "__main__":
     recommender = HybridRecommender()
     recommender.print_recommendations()
+

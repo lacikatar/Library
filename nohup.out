@@ -1,0 +1,1615 @@
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+
+====================================================================================================
+Recommendations for alexandrasutton:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Score: 1.00
+
+2. Catching Fire by Suzanne Collins
+   Score: 0.54
+
+3. City of Glass by Cassandra Clare
+   Score: 0.53
+
+Traceback (most recent call last):
+  File "D:\xampp\htdocs\Library\collaborative_filtering.py", line 228, in <module>
+    cf.print_recommendations()
+  File "D:\xampp\htdocs\Library\collaborative_filtering.py", line 214, in print_recommendations
+    print(f"{i}. {book['Title']} by {book['Authors']}")
+  File "C:\Users\tarla\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+
+====================================================================================================
+Hybrid Recommendations for alexandrasutton:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.42
+
+3. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.33
+
+4. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.32
+
+5. The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid
+   Categories: Audiobook, Contemporary, Fiction, Historical Fiction, LGBT
+   Score: 0.19
+
+6. The Outsiders by S.E. Hinton
+   Categories: Classics, Fiction, Realistic Fiction, School, Young Adult
+   Score: 0.17
+
+7. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.16
+
+8. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.15
+
+9. The Maddest Obsession by Danielle Lori
+   Categories: Contemporary, Romance
+   Score: 0.15
+
+10. Becoming by Michelle Obama
+   Categories: Audiobook, Autobiography, Biography, Memoir, Nonfiction, Politics
+   Score: 0.14
+
+11. God of Fury by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.12
+
+12. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.12
+
+
+====================================================================================================
+Hybrid Recommendations for benczeiza:
+====================================================================================================
+1. The Last One at the Wedding by Jason Rekulak
+   Categories: Audiobook, Fiction, Horror, Mystery, Mystery Thriller, Thriller
+   Score: 0.73
+
+2. God of Ruin by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.59
+
+3. Eclipse by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.52
+
+4. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.50
+
+5. God of Fury by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.43
+
+6. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.42
+
+7. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.41
+
+8. The Pivot Year by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology, Spirituality
+   Score: 0.38
+
+9. Harry Potter and the Prisoner of Azkaban by J.K. Rowling
+   Categories: Fantasy Fiction, Young Adult Fiction
+   Score: 0.36
+
+10. Twilight by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.35
+
+11. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.35
+
+12. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.33
+
+
+====================================================================================================
+Hybrid Recommendations for brucecollier:
+====================================================================================================
+1. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.60
+
+2. A Clash of Kings by George R. R. Martin
+   Categories: Fantasy Fiction
+   Score: 0.48
+
+3. Iron Flame by Rebecca Yarros
+   Categories: Audiobook, Fiction, New Adult, Romantasy
+   Score: 0.40
+
+4. The Cruel Prince by Holly Black
+   Categories: Fantasy, Fiction, Romance, Young Adult
+   Score: 0.37
+
+5. Fourth Wing by Rebecca Yarros
+   Categories: Audiobook, Fiction, Romantasy
+   Score: 0.35
+
+6. Imagine Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Romantasy, Science Fiction, Young Adult
+   Score: 0.34
+
+7. Divergent by Veronica Roth
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.17
+
+8. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+9. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.15
+
+10. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+11. Reckless by Lauren  Roberts
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+12. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for bunyievelin:
+====================================================================================================
+1. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.67
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.60
+
+3. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.48
+
+4. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.47
+
+5. The Picture of Dorian Gray by Oscar Wilde, Robert Mighall
+   Categories: Classics, Fantasy, Fiction, Gothic, Horror, Literature
+   Score: 0.46
+
+6. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.46
+
+7. The Lightning Thief by Rick Riordan
+   Categories: Adventure, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.40
+
+8. The Wicked King by Holly Black
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.36
+
+9. Harry Potter and the Prisoner of Azkaban by J.K. Rowling
+   Categories: Fantasy Fiction, Young Adult Fiction
+   Score: 0.31
+
+10. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.30
+
+11. A Good Girl's Guide to Murder by Holly  Jackson
+   Categories: Audiobook, Contemporary, Crime, Fiction, Mystery Thriller, Thriller, Young Adult
+   Score: 0.30
+
+12. It by Stephen King
+   Categories: Horror Fiction
+   Score: 0.30
+
+
+====================================================================================================
+Hybrid Recommendations for carrjeremy:
+====================================================================================================
+1. Shadow and Bone by Leigh Bardugo
+   Categories: Adventure, Fantasy, Fiction, High Fantasy, Young Adult
+   Score: 0.89
+
+2. The Witch of Duva by Leigh Bardugo
+   Categories: Fantasy, Fiction, Horror, Novella, Young Adult
+   Score: 0.88
+
+3. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.49
+
+4. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.43
+
+5. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.37
+
+7. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.31
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.27
+
+9. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.24
+
+10. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.24
+
+11. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.23
+
+12. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.18
+
+
+====================================================================================================
+Hybrid Recommendations for celliott:
+====================================================================================================
+1. The Witch of Duva by Leigh Bardugo
+   Categories: Fantasy, Fiction, Horror, Novella, Young Adult
+   Score: 0.86
+
+2. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.53
+
+3. Mexican Gothic by Silvia Moreno-Garcia
+   Categories: Fantasy, Fiction, Gothic, Historical Fiction, Horror, Mystery, Thriller
+   Score: 0.51
+
+4. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+5. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.40
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.34
+
+7. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.29
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.24
+
+9. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.23
+
+10. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.21
+
+11. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.21
+
+12. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.17
+
+
+====================================================================================================
+Hybrid Recommendations for cody39:
+====================================================================================================
+1. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.60
+
+2. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.50
+
+3. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+4. The Testaments by Margaret Atwood
+   Categories: Audiobook, Classics, Fiction, Science Fiction
+   Score: 0.39
+
+5. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.32
+
+6. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.26
+
+7. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.24
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.24
+
+9. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.21
+
+10. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.19
+
+11. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+12. November 9 by Colleen Hoover
+   Categories: Audiobook, Contemporary, Fiction, New Adult, Young Adult
+   Score: 0.11
+
+
+====================================================================================================
+Hybrid Recommendations for connor57:
+====================================================================================================
+1. Where's Molly by H.D. Carlton
+   Categories: Contemporary, Horror, Romance, Thriller
+   Score: 0.60
+
+2. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.35
+
+6. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.28
+
+7. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+8. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.14
+
+9. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.14
+
+10. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.13
+
+11. The Wicked King by Holly Black
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.13
+
+12. The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid
+   Categories: Audiobook, Contemporary, Fiction, Historical Fiction, LGBT
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for cunninghamrobert:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.29
+
+7. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.21
+
+9. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.12
+
+10. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.11
+
+11. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.11
+
+12. The Maddest Obsession by Danielle Lori
+   Categories: Contemporary, Romance
+   Score: 0.10
+
+
+====================================================================================================
+Hybrid Recommendations for david17:
+====================================================================================================
+1. The Picture of Dorian Gray by Oscar Wilde, Robert Mighall
+   Categories: Classics, Fantasy, Fiction, Gothic, Horror, Literature
+   Score: 0.60
+
+2. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.40
+
+3. Yellowface by R.F. Kuang
+   Categories: Audiobook, Contemporary, Fiction, Literary Fiction, Mystery, Thriller
+   Score: 0.33
+
+4. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.31
+
+5. Kingdom of the Feared by Kerri Maniscalco
+   Categories: New Adult, Paranormal, Romance, Romantasy, Young Adult
+   Score: 0.27
+
+6. First Lie Wins by Ashley Elston
+   Categories: Audiobook, Contemporary, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.26
+
+7. The Silent Patient by Alex Michaelides
+   Categories: Crime, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.26
+
+8. Verity by Colleen Hoover
+   Categories: Fiction, Mystery, Mystery Thriller, Romance, Thriller
+   Score: 0.25
+
+9. Rock Paper Scissors by Alice Feeney
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.24
+
+10. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.21
+
+11. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.20
+
+12. Imagine Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Romantasy, Science Fiction, Young Adult
+   Score: 0.18
+
+
+====================================================================================================
+Hybrid Recommendations for diana84:
+====================================================================================================
+1. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.60
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.57
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. Heretics of Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.40
+
+5. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+6. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.39
+
+7. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+8. A Curse for True Love by Stephanie Garber
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+9. The Poppy War by R.F. Kuang
+   Categories: Adult, Audiobook, Fantasy, Fiction, High Fantasy, Historical, Historical Fiction
+   Score: 0.29
+
+10. Sandworms of Dune by Brian Herbert, Kevin J. Anderson
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.29
+
+11. Good Girl, Bad Blood by Holly  Jackson
+   Categories: Audiobook, Crime, Fiction, Mystery, Mystery Thriller, Thriller, Young Adult
+   Score: 0.20
+
+12. A Good Girl's Guide to Murder by Holly  Jackson
+   Categories: Audiobook, Contemporary, Crime, Fiction, Mystery Thriller, Thriller, Young Adult
+   Score: 0.20
+
+
+====================================================================================================
+Hybrid Recommendations for egarcia:
+====================================================================================================
+1. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.75
+
+2. If We Were Villains by M.L. Rio
+   Categories: Contemporary, Fiction, LGBT, Mystery, Mystery Thriller, Thriller
+   Score: 0.52
+
+3. Iron Flame by Rebecca Yarros
+   Categories: Audiobook, Fiction, New Adult, Romantasy
+   Score: 0.40
+
+4. The Cruel Prince by Holly Black
+   Categories: Fantasy, Fiction, Romance, Young Adult
+   Score: 0.37
+
+5. Fourth Wing by Rebecca Yarros
+   Categories: Audiobook, Fiction, Romantasy
+   Score: 0.34
+
+6. A Clash of Kings by George R. R. Martin
+   Categories: Fantasy Fiction
+   Score: 0.33
+
+7. The Last One at the Wedding by Jason Rekulak
+   Categories: Audiobook, Fiction, Horror, Mystery, Mystery Thriller, Thriller
+   Score: 0.23
+
+8. Rock Paper Scissors by Alice Feeney
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.22
+
+9. The Magician’s Nephew by C.S. Lewis
+   Categories: Adventure, Childrens, Christian, Fantasy, Fiction, Young Adult
+   Score: 0.21
+
+10. The Silent Patient by Alex Michaelides
+   Categories: Crime, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.20
+
+11. Verity by Colleen Hoover
+   Categories: Fiction, Mystery, Mystery Thriller, Romance, Thriller
+   Score: 0.20
+
+12. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.17
+
+
+====================================================================================================
+Hybrid Recommendations for gallowayeric:
+====================================================================================================
+1. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.60
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.55
+
+3. The Reappearance of Rachel Price by Holly  Jackson
+   Categories: Audiobook, Contemporary, Fiction, Mystery, Mystery Thriller, Thriller, Young Adult
+   Score: 0.46
+
+4. Heretics of Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.40
+
+5. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+6. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+7. The Last Olympian by Rick Riordan
+   Categories: Adventure, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.39
+
+8. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.39
+
+9. Wrath of the Triple Goddess by Rick Riordan
+   Categories: Audiobook, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.37
+
+10. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+11. A Curse for True Love by Stephanie Garber
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+12. The Poppy War by R.F. Kuang
+   Categories: Adult, Audiobook, Fantasy, Fiction, High Fantasy, Historical, Historical Fiction
+   Score: 0.30
+
+
+====================================================================================================
+Hybrid Recommendations for gregorymendez:
+====================================================================================================
+1. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.60
+
+2. Where's Molly by H.D. Carlton
+   Categories: Contemporary, Horror, Romance, Thriller
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+7. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.28
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.27
+
+9. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+10. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.14
+
+11. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.14
+
+12. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for hallchristine:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.54
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.30
+
+7. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.23
+
+9. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.16
+
+10. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.12
+
+11. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.12
+
+Traceback (most recent call last):
+  File "D:\xampp\htdocs\Library\hybrid_recommendations.py", line 272, in <module>
+    recommender.print_recommendations()
+  File "D:\xampp\htdocs\Library\hybrid_recommendations.py", line 256, in print_recommendations
+    print(f"{i}. {book['Title']} by {book['Authors']}")
+  File "C:\Users\tarla\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200b' in position 6: character maps to <undefined>
+
+====================================================================================================
+Recommendations for alexandrasutton:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Score: 1.00
+
+2. Catching Fire by Suzanne Collins
+   Score: 0.54
+
+3. City of Glass by Cassandra Clare
+   Score: 0.53
+
+Traceback (most recent call last):
+  File "D:\xampp\htdocs\Library\collaborative_filtering.py", line 228, in <module>
+    cf.print_recommendations()
+  File "D:\xampp\htdocs\Library\collaborative_filtering.py", line 214, in print_recommendations
+    print(f"{i}. {book['Title']} by {book['Authors']}")
+  File "C:\Users\tarla\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200b' in position 5: character maps to <undefined>
+
+====================================================================================================
+Hybrid Recommendations for alexandrasutton:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.42
+
+3. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.33
+
+4. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.32
+
+5. The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid
+   Categories: Audiobook, Contemporary, Fiction, Historical Fiction, LGBT
+   Score: 0.19
+
+6. The Outsiders by S.E. Hinton
+   Categories: Classics, Fiction, Realistic Fiction, School, Young Adult
+   Score: 0.17
+
+7. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.16
+
+8. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.15
+
+9. The Maddest Obsession by Danielle Lori
+   Categories: Contemporary, Romance
+   Score: 0.15
+
+10. Becoming by Michelle Obama
+   Categories: Audiobook, Autobiography, Biography, Memoir, Nonfiction, Politics
+   Score: 0.14
+
+11. God of Fury by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.12
+
+12. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.12
+
+
+====================================================================================================
+Hybrid Recommendations for benczeiza:
+====================================================================================================
+1. The Last One at the Wedding by Jason Rekulak
+   Categories: Audiobook, Fiction, Horror, Mystery, Mystery Thriller, Thriller
+   Score: 0.73
+
+2. God of Ruin by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.59
+
+3. Eclipse by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.52
+
+4. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.50
+
+5. God of Fury by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.43
+
+6. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.42
+
+7. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.41
+
+8. The Pivot Year by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology, Spirituality
+   Score: 0.38
+
+9. Harry Potter and the Prisoner of Azkaban by J.K. Rowling
+   Categories: Fantasy Fiction, Young Adult Fiction
+   Score: 0.36
+
+10. Twilight by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.35
+
+11. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.35
+
+12. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.33
+
+
+====================================================================================================
+Hybrid Recommendations for brucecollier:
+====================================================================================================
+1. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.60
+
+2. A Clash of Kings by George R. R. Martin
+   Categories: Fantasy Fiction
+   Score: 0.48
+
+3. Iron Flame by Rebecca Yarros
+   Categories: Audiobook, Fiction, New Adult, Romantasy
+   Score: 0.40
+
+4. The Cruel Prince by Holly Black
+   Categories: Fantasy, Fiction, Romance, Young Adult
+   Score: 0.37
+
+5. Fourth Wing by Rebecca Yarros
+   Categories: Audiobook, Fiction, Romantasy
+   Score: 0.35
+
+6. Imagine Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Romantasy, Science Fiction, Young Adult
+   Score: 0.34
+
+7. Divergent by Veronica Roth
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.17
+
+8. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+9. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.15
+
+10. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+11. Reckless by Lauren  Roberts
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+12. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for bunyievelin:
+====================================================================================================
+1. The Guest List by Lucy Foley
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.77
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.60
+
+3. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.52
+
+4. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.49
+
+5. The Picture of Dorian Gray by Oscar Wilde, Robert Mighall
+   Categories: Classics, Fantasy, Fiction, Gothic, Horror, Literature
+   Score: 0.47
+
+6. It by Stephen King
+   Categories: Horror Fiction
+   Score: 0.43
+
+7. The Lightning Thief by Rick Riordan
+   Categories: Adventure, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.40
+
+8. Harry Potter and the Prisoner of Azkaban by J.K. Rowling
+   Categories: Fantasy Fiction, Young Adult Fiction
+   Score: 0.37
+
+9. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.33
+
+10. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.30
+
+11. A Good Girl's Guide to Murder by Holly  Jackson
+   Categories: Audiobook, Contemporary, Crime, Fiction, Mystery Thriller, Thriller, Young Adult
+   Score: 0.30
+
+12. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.29
+
+
+====================================================================================================
+Hybrid Recommendations for carrjeremy:
+====================================================================================================
+1. Shadow and Bone by Leigh Bardugo
+   Categories: Adventure, Fantasy, Fiction, High Fantasy, Young Adult
+   Score: 0.89
+
+2. The Witch of Duva by Leigh Bardugo
+   Categories: Fantasy, Fiction, Horror, Novella, Young Adult
+   Score: 0.88
+
+3. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.49
+
+4. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.43
+
+5. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.37
+
+7. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.31
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.27
+
+9. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.24
+
+10. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.24
+
+11. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.23
+
+12. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.18
+
+
+====================================================================================================
+Hybrid Recommendations for celliott:
+====================================================================================================
+1. The Witch of Duva by Leigh Bardugo
+   Categories: Fantasy, Fiction, Horror, Novella, Young Adult
+   Score: 0.86
+
+2. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.53
+
+3. Mexican Gothic by Silvia Moreno-Garcia
+   Categories: Fantasy, Fiction, Gothic, Historical Fiction, Horror, Mystery, Thriller
+   Score: 0.51
+
+4. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+5. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.40
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.34
+
+7. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.29
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.24
+
+9. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.23
+
+10. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.21
+
+11. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.21
+
+12. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.17
+
+
+====================================================================================================
+Hybrid Recommendations for cody39:
+====================================================================================================
+1. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.60
+
+2. Hidden Potential by Adam M. Grant
+   Categories: Audiobook, Business, Nonfiction, Personal Development, Psychology
+   Score: 0.50
+
+3. Ruin and Rising by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.42
+
+4. The Testaments by Margaret Atwood
+   Categories: Audiobook, Classics, Fiction, Science Fiction
+   Score: 0.39
+
+5. You'd Be Home Now by Kathleen Glasgow
+   Categories: Audiobook, Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.32
+
+6. It's Kind of a Funny Story by Ned Vizzini
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.26
+
+7. All the Bright Places by Jennifer Niven
+   Categories: Contemporary, Fiction, Realistic Fiction, Romance, Young Adult
+   Score: 0.24
+
+8. Caraval by Stephanie Garber
+   Categories: Fantasy, Fiction, Mystery, Romance, Young Adult
+   Score: 0.24
+
+9. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.21
+
+10. A Thousand Broken Pieces by Tillie Cole
+   Categories: Audiobook, Contemporary, Fiction, Romance, Young Adult
+   Score: 0.19
+
+11. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.15
+
+12. November 9 by Colleen Hoover
+   Categories: Audiobook, Contemporary, Fiction, New Adult, Young Adult
+   Score: 0.11
+
+
+====================================================================================================
+Hybrid Recommendations for connor57:
+====================================================================================================
+1. Where's Molly by H.D. Carlton
+   Categories: Contemporary, Horror, Romance, Thriller
+   Score: 0.60
+
+2. Catching Fire by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.35
+
+6. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.28
+
+7. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+8. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.14
+
+9. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.14
+
+10. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.13
+
+11. The Wicked King by Holly Black
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.13
+
+12. The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid
+   Categories: Audiobook, Contemporary, Fiction, Historical Fiction, LGBT
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for cunninghamrobert:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.29
+
+7. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.21
+
+9. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.12
+
+10. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.11
+
+11. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.11
+
+12. The Maddest Obsession by Danielle Lori
+   Categories: Contemporary, Romance
+   Score: 0.10
+
+
+====================================================================================================
+Hybrid Recommendations for david17:
+====================================================================================================
+1. The Picture of Dorian Gray by Oscar Wilde, Robert Mighall
+   Categories: Classics, Fantasy, Fiction, Gothic, Horror, Literature
+   Score: 0.60
+
+2. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.40
+
+3. Yellowface by R.F. Kuang
+   Categories: Audiobook, Contemporary, Fiction, Literary Fiction, Mystery, Thriller
+   Score: 0.33
+
+4. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.31
+
+5. Kingdom of the Feared by Kerri Maniscalco
+   Categories: New Adult, Paranormal, Romance, Romantasy, Young Adult
+   Score: 0.27
+
+6. First Lie Wins by Ashley Elston
+   Categories: Audiobook, Contemporary, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.26
+
+7. The Silent Patient by Alex Michaelides
+   Categories: Crime, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.26
+
+8. Verity by Colleen Hoover
+   Categories: Fiction, Mystery, Mystery Thriller, Romance, Thriller
+   Score: 0.25
+
+9. Rock Paper Scissors by Alice Feeney
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.24
+
+10. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.21
+
+11. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.20
+
+12. Imagine Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Romantasy, Science Fiction, Young Adult
+   Score: 0.18
+
+
+====================================================================================================
+Hybrid Recommendations for diana84:
+====================================================================================================
+1. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.60
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.57
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. Heretics of Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.40
+
+5. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+6. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.39
+
+7. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+8. A Curse for True Love by Stephanie Garber
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+9. The Poppy War by R.F. Kuang
+   Categories: Adult, Audiobook, Fantasy, Fiction, High Fantasy, Historical, Historical Fiction
+   Score: 0.29
+
+10. Sandworms of Dune by Brian Herbert, Kevin J. Anderson
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.29
+
+11. Good Girl, Bad Blood by Holly  Jackson
+   Categories: Audiobook, Crime, Fiction, Mystery, Mystery Thriller, Thriller, Young Adult
+   Score: 0.20
+
+12. A Good Girl's Guide to Murder by Holly  Jackson
+   Categories: Audiobook, Contemporary, Crime, Fiction, Mystery Thriller, Thriller, Young Adult
+   Score: 0.20
+
+
+====================================================================================================
+Hybrid Recommendations for egarcia:
+====================================================================================================
+1. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.75
+
+2. If We Were Villains by M.L. Rio
+   Categories: Contemporary, Fiction, LGBT, Mystery, Mystery Thriller, Thriller
+   Score: 0.52
+
+3. Iron Flame by Rebecca Yarros
+   Categories: Audiobook, Fiction, New Adult, Romantasy
+   Score: 0.40
+
+4. The Cruel Prince by Holly Black
+   Categories: Fantasy, Fiction, Romance, Young Adult
+   Score: 0.37
+
+5. Fourth Wing by Rebecca Yarros
+   Categories: Audiobook, Fiction, Romantasy
+   Score: 0.34
+
+6. A Clash of Kings by George R. R. Martin
+   Categories: Fantasy Fiction
+   Score: 0.33
+
+7. The Last One at the Wedding by Jason Rekulak
+   Categories: Audiobook, Fiction, Horror, Mystery, Mystery Thriller, Thriller
+   Score: 0.23
+
+8. Rock Paper Scissors by Alice Feeney
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.22
+
+9. The Magician’s Nephew by C.S. Lewis
+   Categories: Adventure, Childrens, Christian, Fantasy, Fiction, Young Adult
+   Score: 0.21
+
+10. The Silent Patient by Alex Michaelides
+   Categories: Crime, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.20
+
+11. Verity by Colleen Hoover
+   Categories: Fiction, Mystery, Mystery Thriller, Romance, Thriller
+   Score: 0.20
+
+12. The Maidens by Alex Michaelides
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Thriller
+   Score: 0.17
+
+
+====================================================================================================
+Hybrid Recommendations for gallowayeric:
+====================================================================================================
+1. The Housemaid by Freida McFadden
+   Categories: Audiobook, Fiction, Mystery, Mystery Thriller, Psychological Thriller, Thriller
+   Score: 0.60
+
+2. The Murder of Roger Ackroyd by Agatha Christie
+   Categories: Mystery Fiction
+   Score: 0.55
+
+3. The Reappearance of Rachel Price by Holly  Jackson
+   Categories: Audiobook, Contemporary, Fiction, Mystery, Mystery Thriller, Thriller, Young Adult
+   Score: 0.46
+
+4. Heretics of Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.40
+
+5. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+6. City of Glass by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+7. The Last Olympian by Rick Riordan
+   Categories: Adventure, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.39
+
+8. Chapterhouse: Dune by Frank Herbert
+   Categories: Audiobook, Classics, Fantasy, Fiction, Science Fiction
+   Score: 0.39
+
+9. Wrath of the Triple Goddess by Rick Riordan
+   Categories: Audiobook, Fantasy, Fiction, Greek Mythology, Mythology, Young Adult
+   Score: 0.37
+
+10. Once Upon a Broken Heart by Stephanie Garber
+   Categories: Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+11. A Curse for True Love by Stephanie Garber
+   Categories: Audiobook, Fantasy, Romance, Romantasy, Young Adult
+   Score: 0.34
+
+12. The Poppy War by R.F. Kuang
+   Categories: Adult, Audiobook, Fantasy, Fiction, High Fantasy, Historical, Historical Fiction
+   Score: 0.30
+
+
+====================================================================================================
+Hybrid Recommendations for gregorymendez:
+====================================================================================================
+1. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.60
+
+2. Where's Molly by H.D. Carlton
+   Categories: Contemporary, Horror, Romance, Thriller
+   Score: 0.48
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+7. Red Queen by Victoria Aveyard
+   Categories: Audiobook, Fiction, Romance, Young Adult
+   Score: 0.28
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.27
+
+9. Legendary by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.15
+
+10. Finale by Stephanie Garber
+   Categories: Audiobook, Fantasy, Fiction, Romance, Romantasy, Young Adult
+   Score: 0.14
+
+11. Unravel Me by Tahereh Mafi
+   Categories: Fantasy, Fiction, Romance, Science Fiction, Young Adult
+   Score: 0.14
+
+12. King of Scars by Leigh Bardugo
+   Categories: Fantasy, Fiction, High Fantasy, Romance, Young Adult
+   Score: 0.13
+
+
+====================================================================================================
+Hybrid Recommendations for hallchristine:
+====================================================================================================
+1. King's Cage by Reni Indardini, Victoria Aveyard
+   Categories: Audiobook, Fantasy, Fiction, Romance, Young Adult
+   Score: 0.60
+
+2. A Little Life by Hanya Yanagihara
+   Categories: Contemporary, Fiction, LGBT, Literary Fiction
+   Score: 0.54
+
+3. City of Fallen Angels by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.40
+
+4. City of Bones by Cassandra Clare
+   Categories: Fantasy, Fiction, Paranormal, Romance, Young Adult
+   Score: 0.39
+
+5. Mockingjay by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.31
+
+6. Haunting Adeline by H.D. Carlton
+   Categories: Fantasy, Fiction, Horror, Thriller
+   Score: 0.30
+
+7. The Hunger Games by Suzanne Collins
+   Categories: Dystopian Fiction, Young Adult Fiction
+   Score: 0.29
+
+8. Macbeth by William Shakespeare
+   Categories: Classics, Fiction, Literature, School, Theatre
+   Score: 0.23
+
+9. Breaking Dawn by Stephenie Meyer
+   Categories: Young Adult Fiction
+   Score: 0.16
+
+10. God of Malice by Rina Kent
+   Categories: New Adult, Romance
+   Score: 0.12
+
+11. The Mountain Is You by Brianna Wiest
+   Categories: Audiobook, Nonfiction, Personal Development, Poetry, Psychology
+   Score: 0.12
+
+Traceback (most recent call last):
+  File "D:\xampp\htdocs\Library\hybrid_recommendations.py", line 272, in <module>
+    recommender.print_recommendations()
+  File "D:\xampp\htdocs\Library\hybrid_recommendations.py", line 256, in print_recommendations
+    print(f"{i}. {book['Title']} by {book['Authors']}")
+  File "C:\Users\tarla\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u200b' in position 6: character maps to <undefined>

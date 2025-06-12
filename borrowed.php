@@ -137,6 +137,7 @@ $pastBorrowed = $pastStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>My Borrowed Books - Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>

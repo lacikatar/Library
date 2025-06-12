@@ -70,100 +70,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Alexandria's Haven</title>
+    <title>Login - Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
+     
         body {
             background-color: #E6D5C3;
         }
         .navbar {
             background-color: #8B7355 !important;
-            padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #fff !important;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .navbar-brand:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-        .nav-link {
-            color: rgba(255,255,255,0.9) !important;
-            padding: 0.5rem 1rem !important;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin: 0 0.2rem;
-        }
-        .nav-link:hover {
-            color: #fff !important;
-            background-color: rgba(255,255,255,0.1);
-        }
-        .dropdown-menu {
-            background-color: #F4EBE2;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 0.5rem;
-        }
-        .dropdown-item {
-            color: #2C3E50;
-            padding: 0.7rem 1rem;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        .dropdown-item:hover {
-            background-color: #8B7355;
-            color: #fff;
-        }
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .navbar-toggler:focus {
-            box-shadow: none;
-            background-color: rgba(255,255,255,0.1);
-        }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        .welcome-text {
-            color: rgba(255,255,255,0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            background-color: rgba(255,255,255,0.1);
-            margin-right: 1rem;
-        }
-        .btn-login {
-            background-color: rgba(255,255,255,0.1);
-            color: #fff !important;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        .btn-login:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-        .btn-register {
-            background-color: #fff;
-            color: #8B7355 !important;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            margin-left: 0.5rem;
-        }
-        .btn-register:hover {
+        .card {
             background-color: #F4EBE2;
         }
+    
     </style>
 </head>
 <body>
@@ -196,18 +118,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                        
-                        <button type="submit" class="btn btn-primary w-100">
+                        <button type="submit" class="btn btn-primary w-100" style="background-color: #8B7355; border-color: #8B7355;">
                             <i class="bi bi-box-arrow-in-right me-2"></i>Login
                         </button>
                     </form>
                     <div class="text-center mt-3">
-                        <p>Don't have an account? <a href="register.php"><i class="bi bi-person-plus me-1"></i>Register here</a></p>
+                        <p>Don't have an account? <a href="register.php" style="color: #8B7355;"><i class="bi bi-person-plus me-1"></i>Register here</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br><br>
+
 
 <?php include 'footer.php'; ?>
 

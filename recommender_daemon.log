@@ -1,0 +1,13 @@
+2025-06-12 13:57:07,229 - INFO - Starting recommender daemon...
+2025-06-12 13:59:07,388 - INFO - New user activity detected.
+2025-06-12 13:59:07,409 - INFO - Triggered D:\xampp\htdocs\Library\collaborative_filtering.py
+2025-06-12 13:59:07,420 - INFO - Triggered D:\xampp\htdocs\Library\hybrid_recommendations.py
+2025-06-12 14:03:07,469 - INFO - New user activity detected.
+2025-06-12 14:03:07,485 - INFO - Triggered D:\xampp\htdocs\Library\collaborative_filtering.py
+2025-06-12 14:03:07,485 - INFO - Triggered D:\xampp\htdocs\Library\hybrid_recommendations.py
+2025-06-12 14:13:00,060 - INFO - Starting recommender daemon...
+2025-06-12 14:15:00,172 - INFO - New user activity detected.
+2025-06-12 14:15:00,172 - INFO - Running: D:\xampp\htdocs\Library\collaborative_filtering.py
+2025-06-12 14:15:15,307 - INFO - Finished: D:\xampp\htdocs\Library\collaborative_filtering.py
+2025-06-12 14:15:15,307 - INFO - Running: D:\xampp\htdocs\Library\hybrid_recommendations.py
+2025-06-12 14:15:33,797 - INFO - Finished: D:\xampp\htdocs\Library\hybrid_recommendations.py

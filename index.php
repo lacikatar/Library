@@ -3,12 +3,14 @@
 session_start();
 
 
-
+exec("python3 ./hybrid_recommendations.py  > /dev/null 2>&1 &");
+   
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>

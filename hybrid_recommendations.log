@@ -53,3 +53,8 @@
 2025-06-10 15:05:13,155 - ERROR - Error fetching user interactions: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
 2025-06-10 15:05:13,155 - ERROR - Error getting recommendations: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
 2025-06-10 15:05:13,156 - ERROR - Error printing recommendations: 1054 (42S22): Unknown column 'Updated_At' in 'field list'
+2025-06-12 13:31:23,758 - ERROR - Error printing recommendations: module 'logging' has no attribute 'message'
+2025-06-12 13:34:14,568 - INFO - Ok
+2025-06-12 13:59:15,647 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 6: character maps to <undefined>
+2025-06-12 14:03:15,690 - ERROR - Error printing recommendations: 'charmap' codec can't encode character '\u200b' in position 6: character maps to <undefined>
+2025-06-12 14:15:33,578 - INFO - Ok

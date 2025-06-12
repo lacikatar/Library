@@ -322,6 +322,8 @@ if ($isbn) {
 <!DOCTYPE html>
 <html>
 <head>
+    <title><?php echo htmlspecialchars($bookDetails['Title']); ?> - Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
@@ -568,7 +570,7 @@ if ($isbn) {
                             </form>
                         </div>
 
-                        <?php if ($currentStatus === 'Read'): ?>
+                        <?php if ($currentStatus === 'Read' || $currentStatus === 'DNF'): ?>
                             <div class="status-box mt-4">
                                 <h5 class="mb-3">My Review</h5>
                                 <?php
@@ -600,7 +602,7 @@ if ($isbn) {
                                                   placeholder="Share your thoughts about this book..."><?= $review ? htmlspecialchars($review['Review']) : '' ?></textarea>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <button type="submit" name="submit_review" class="btn btn-primary btn-custom">
+                                        <button type="submit" name="submit_review" class="btn btn-primary btn-custom" style="background-color: #8B7355; border-color: #8B7355;">
                                             <i class="bi bi-pencil me-2"></i><?= $review ? 'Update Review' : 'Submit Review' ?>
                                         </button>
                                         <?php if ($review): ?>
@@ -692,7 +694,7 @@ if ($isbn) {
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
-                                    <button type="submit" name="borrow" class="btn btn-primary btn-custom">
+                                    <button type="submit" name="borrow" class="btn btn-primary btn-custom" style="background-color: #8B7355; border-color: #8B7355;">
                                         <i class="bi bi-book me-2"></i>Borrow Now
                                     </button>
                                 </form>
@@ -720,7 +722,7 @@ if ($isbn) {
 
                                 <?php if (!$onWaitlist): ?>
                                     <form method="POST">
-                                        <button type="submit" name="join_waitlist" class="btn btn-warning btn-custom">
+                                        <button type="submit" name="join_waitlist" class="btn btn-warning btn-custom" style="background-color: #8B7355; border-color: #8B7355; color: white;">
                                             <i class="bi bi-clock me-2"></i>Join Waitlist
                                         </button>
                                     </form>
@@ -783,10 +785,10 @@ if ($isbn) {
                                         </select>
                                     </div>
                                     <div class="d-flex gap-2">
-                                        <button type="submit" name="add_to_list" class="btn btn-success btn-custom">
+                                        <button type="submit" name="add_to_list" class="btn btn-success btn-custom" style="background-color: #8B7355; border-color: #8B7355;">
                                             <i class="bi bi-plus-circle me-2"></i>Add to List
                                         </button>
-                                        <a href="reading-lists.php" class="btn btn-outline-success btn-custom">
+                                        <a href="reading-lists.php" class="btn btn-outline-success btn-custom" style="color: #8B7355;">
                                             <i class="bi bi-plus-circle me-2"></i>Create New List
                                         </a>
                                     </div>

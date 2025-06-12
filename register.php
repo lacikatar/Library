@@ -56,7 +56,8 @@ foreach ($defaultLists as $listName) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register - Alexandria's Haven</title>
+    <title>Register - Laci's Library</title>
+    <link rel="icon" type="favicon" href="img/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
@@ -113,12 +114,12 @@ foreach ($defaultLists as $listName) {
                             </label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">
+                        <button type="submit" class="btn btn-primary w-100" style="background-color: #8B7355; border-color: #8B7355;">
                             <i class="bi bi-person-plus me-2"></i>Register
                         </button>
                     </form>
                     <div class="text-center mt-3">
-                        <p>Already have an account? <a href="login.php"><i class="bi bi-box-arrow-in-right me-1"></i>Login here</a></p>
+                        <p>Already have an account? <a href="login.php" style="color: #8B7355;"><i class="bi bi-box-arrow-in-right me-1" style="color: #8B7355;"></i>Login here</a></p>
                     </div>
                 </div>
             </div>
