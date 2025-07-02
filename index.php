@@ -283,7 +283,7 @@ exec("python3 ./hybrid_recommendations.py  > /dev/null 2>&1 &");
 <div class="container">
     <div class="welcome-text page-welcome">
         <h1>Welcome to Laci's Library</h1>
-        <p class="lead">Your gateway to endless literary adventures</p>
+       <!-- <p class="lead"></p>-->
     </div>
 </div>
 

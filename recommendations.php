@@ -2,13 +2,13 @@
 session_start();
 require_once 'functions.php';
 
-// Check if user is logged in
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Database connection
+
 $host = "localhost";
 $username = "root";
 $password = "lacika";
@@ -21,18 +21,18 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Get filter parameters
+
 $method = isset($_GET['method']) ? $_GET['method'] : 'hybrid';
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $books_per_page = 12;
 $offset = ($page - 1) * $books_per_page;
 
-// Get recommendations based on method
+//Methodus alapu aj
 $recommendations = [];
 $total_recommendations = 0;
 
 if ($method === 'hybrid') {
-    // Get hybrid recommendations from the database
+    // hibrid
     $stmt = $conn->prepare("
         SELECT b.ISBN, b.Title, b.Image_URL,
                GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
@@ -54,7 +54,7 @@ if ($method === 'hybrid') {
     
     $recommendations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Get total count for pagination
+    
     $countStmt = $conn->prepare("
         SELECT COUNT(*) 
         FROM recommendations 
@@ -66,7 +66,7 @@ if ($method === 'hybrid') {
     
     $total_pages = ceil($total_recommendations / $books_per_page);
 } elseif ($method === 'collaborative') {
-    // Get collaborative recommendations from the database
+    // Kollab
     $stmt = $conn->prepare("
         SELECT b.ISBN, b.Title, b.Image_URL,
                GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
@@ -88,7 +88,7 @@ if ($method === 'hybrid') {
     
     $recommendations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Get total count for pagination
+    
     $countStmt = $conn->prepare("
         SELECT COUNT(*) 
         FROM collab_recommendations 
@@ -100,7 +100,7 @@ if ($method === 'hybrid') {
     
     $total_pages = ceil($total_recommendations / $books_per_page);
 } else {
-    // Content-based recommendations
+    // Tartalom
     $stmt = $conn->prepare("
         WITH weighted_scores AS (
             SELECT b.ISBN, b.Title, b.Image_URL,
@@ -136,7 +136,6 @@ if ($method === 'hybrid') {
     $total_recommendations = count($recommendations);
 }
 
-// Since we're limiting to 12 books, we don't need pagination
 $total_pages = 1;
 ?>
 

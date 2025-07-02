@@ -1,11 +1,11 @@
 <?php 
 session_start();
 $host = "localhost";
-$username = "root";  // Change if needed
-$password = "lacika";      // Change if needed
+$username = "root";  
+$password = "lacika";      
 $database = "Librarydb";
 
-// Connect using PDO
+
 try {
     $conn = new PDO("mysql:host=$host;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,10 +30,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         ':password' => $password
     ]);
 
-// Get the last inserted ID
+
 $memberID = $conn->lastInsertId();
 
-// Create default reading lists
+
 $defaultLists = [
     'Currently Reading',
     'Read',

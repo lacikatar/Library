@@ -2,13 +2,12 @@
 session_start();
 require_once 'functions.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Database connection setup
+
 $host = "localhost";
 $username = "root";
 $password = "lacika";
@@ -21,14 +20,13 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Handle book return
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
     $borrowId = $_POST['borrow_id'];
     
     try {
         $conn->beginTransaction();
         
-        // Update borrowing status
+       
         $returnStmt = $conn->prepare("
             UPDATE borrowing 
             SET Status = 'Returned', Return_Date = CURDATE() 
@@ -36,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
         ");
         $returnStmt->execute([$borrowId, $_SESSION['user_id']]);
         
-        // Get the ISBN of the returned book
+       
         $isbnStmt = $conn->prepare("
             SELECT b.ISBN 
             FROM borrowing br 
@@ -47,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
         $isbnStmt->execute([$borrowId]);
         $isbn = $isbnStmt->fetchColumn();
         
-        // Update user's book status to 'Read'
+       
         $statusStmt = $conn->prepare("
             INSERT INTO user_book_status (Member_ID, ISBN, Status)
             VALUES (?, ?, 'Read')
@@ -55,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
         ");
         $statusStmt->execute([$_SESSION['user_id'], $isbn]);
         
-        // Log the return activity
+      
         logUserActivity($_SESSION['user_id'], $isbn, 'Returned', $conn);
         
         $conn->commit();
@@ -67,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book'])) {
     }
 }
 
-// Get current borrowed books
+
 $currentSql = "
     SELECT 
         b.Bor_ID,
@@ -222,7 +220,7 @@ $pastBorrowed = $pastStmt->fetchAll(PDO::FETCH_ASSOC);
                             
                             <form method="POST" class="d-inline">
                                 <input type="hidden" name="borrow_id" value="<?= $book['Bor_ID'] ?>">
-                                <button type="submit" name="return_book" class="btn btn-primary">
+                                <button type="submit" name="return_book" class="btn btn-primary" style="background-color: #8B7355; border-color: #8B7355;">
                                     <i class="bi bi-arrow-return-left me-1"></i>
                                     Return Book
                                 </button>

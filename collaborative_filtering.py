@@ -5,7 +5,7 @@ import mysql.connector
 from datetime import datetime, timedelta
 import logging
 
-# Set up logging
+#Naplo
 logging.basicConfig(
     filename='collaborative_filtering.log',
     level=logging.INFO,

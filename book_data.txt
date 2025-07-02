@@ -1,13 +1,26 @@
 
+
 --------------------------------------------------
-Title: Blood Over Bright Haven
-Author: M.L. Wang
-Series: Standalone
-ISBN: 9780593873359
-Publisher: Del Rey
+Title: Divine Rivals
+Author: Rebecca   Ross
+Series: Letters of Enchantment
+ISBN: 9781250857439
+Publisher: Wednesday Books
 Release Year: 2023
-Categories: ['Fantasy', 'Fiction', 'Adult', 'Audiobook']
-Categories: [ 'Dark Academia', 'Magic', 'High Fantasy']
-Page Count: 430
-Image_URL: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1717354584i/208430658.jpg
-Description: Magic has made the city of Tiran an industrial utopia, but magic has a cost—and the collectors have come calling. An orphan since the age of four, Sciona has always had more to prove than her fellow students. For twenty years, she has devoted every waking moment to the study of magic, fueled by a mad desire to achieve the impossible: to be the first woman ever admitted to the High Magistry. When she finally claws her way up the ranks to become a highmage, however, she finds that her challenges have just begun. Her new colleagues will stop at nothing to let her know she is unwelcome, beginning with giving her a janitor instead of a qualified lab assistant. What neither Sciona nor her peers realize is that her taciturn assistant was once more than a janitor; before he mopped floors for the mages, Thomil was a nomadic hunter from beyond Tiran’s magical barrier. Ten years have passed since he survived the perilous crossing that killed his family. But working for a highmage, he sees the opportunity to finally understand the forces that decimated his tribe, drove him from his homeland, and keep the Tiranish in power. Through their fractious relationship, mage and outsider uncover an ancient secret that could change the course of magic forever—if it doesn’t get them killed first. Sciona has defined her life by the pursuit of truth, but how much is one truth worth with the fate of civilization in the balance? A standalone dark academia brimming with mystery, tragedy, and the damning echoes of the past. For fans of Leigh Bardugo, V. E. Schwab, and Fullmetal Alchemist. (Content warnings for gore, sexual assault, and suicidal ideation)
+Categories: ['Romance', 'Young Adult', 'Romantasy', 'Audiobook', 'Fiction', 'Enemies To Lovers', 'Historical Fiction']
+Tags: []
+Page Count: 357
+Image_URL: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1655928079i/60784546.jpg
+Description: After centuries of sleep, the gods are warring again… All eighteen-year-old Iris Winnow wants to do is hold her family together. With a brother on the frontline forced to fight on behalf of the Gods now missing from the frontline and a mother drowning her sorrows, Iris’s best bet is winning the columnist promotion at the Oath Gazette. But when Iris’s letters to her brother fall into the wrong hands – that of the handsome but cold Roman Kitt, her rival at the paper – an unlikely magical connection forms. Expelled into the middle of a mystical war, magical typewriters in tow, can their bond withstand the fight for the fate of mankind and, most importantly, love? An epic enemies-to-lovers fantasy novel filled with hope and heartbreak, and the unparalleled power of love.
+
+--------------------------------------------------
+Title: Ruthless Vows
+Author: Rebecca   Ross
+Series: Letters of Enchantment
+ISBN: 9781250857453
+Publisher: Wednesday Books
+Release Year: 2023
+Categories: ['Fantasy', 'Romance', 'Young Adult', 'Romantasy', 'Audiobook', 'Fiction', 'Historical Fiction']
+Page Count: 420
+Image_URL: https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1684911482i/127280062.jpg
+Description: Torn apart by war. Reunited by love? Two weeks have passed since Iris returned home bruised and heartbroken from the front, but the war is far from over. Roman is missing, lost behind enemy lines, with no memory of his past, or Iris. Hoping his memories return, he begins to write again – but this time for the enemy. When a strange letter arrives through his wardrobe door, he strikes up a correspondence with a penpal who seems at once mysterious… and strangely familiar. As their connection deepens, the two of them will risk their very hearts and futures to change the tides of the war.

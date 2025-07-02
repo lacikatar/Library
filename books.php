@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Database connection setup
+
 $host = "localhost";
 $username = "root";
 $password = "lacika";
@@ -13,7 +13,7 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Get current page and sort parameters
+// Jelen oldal es szures
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'title';
 $sort_order = isset($_GET['order']) ? $_GET['order'] : 'asc';
@@ -22,7 +22,7 @@ $availability = isset($_GET['availability']) ? $_GET['availability'] : '';
 $books_per_page = 12;
 $offset = ($page - 1) * $books_per_page;
 
-// Get sorting
+// Rendezes
 $sort_column = match($sort_by) {
     'page' => 'b.Page_Nr',
     'year' => 'b.Release_Year',
@@ -31,7 +31,7 @@ $sort_column = match($sort_by) {
 
 $sort_direction = $sort_order === 'desc' ? 'DESC' : 'ASC';
 
-// Build availability condition
+// Elereheto
 $availability_condition = '';
 if ($availability === 'available') {
     $availability_condition = "AND EXISTS (
@@ -45,14 +45,14 @@ if ($availability === 'available') {
     )";
 }
 
-// First get total count of books
+// ossz konyv
 $count_sql = "SELECT COUNT(DISTINCT b.ISBN) as total 
               FROM Book b
               WHERE 1=1 $availability_condition";
 $total_books = $conn->query($count_sql)->fetch(PDO::FETCH_ASSOC)['total'];
 $total_pages = ceil($total_books / $books_per_page);
 
-// Fetch books with pagination and sorting
+// Oldalazas es szures lekerese
 $sql1 = "WITH RankedBooks AS (
     SELECT DISTINCT b.ISBN, 
            b.Title, 
@@ -449,19 +449,19 @@ $stmt->execute();
             echo '<div class="col">';
             echo '<div class="card h-100">';
             
-            // Image section
+            // Borito
             echo '<a href="book_details.php?isbn=' . urlencode($row['ISBN']) . '" class="text-decoration-none">';
             echo '<img src="' . ($row['Image_URL'] ?: 'default_cover.jpg') . '" 
                       class="card-img-top" 
                       alt="' . htmlspecialchars($row['Title']) . '">';
             echo '</a>';
 
-            // Card body
+            // Kartya
             echo '<div class="card-body">';
             echo '<h5 class="card-title">' . htmlspecialchars($row['Title']) . '</h5>';
             echo '<p class="card-text">By ' . htmlspecialchars($row['authors']) . '</p>';
             
-            // Categories
+            // Kat
             if (!empty($row['categories'])) {
                 echo '<div class="d-flex flex-wrap gap-1">';
                 foreach (explode(', ', $row['categories']) as $category) {
@@ -471,7 +471,7 @@ $stmt->execute();
             }
             echo '</div>';
 
-            // Card footer with link
+            // Kartya linkel a konzv fele
             echo '<div class="card-footer">';
             echo '<a href="book_details.php?isbn=' . urlencode($row['ISBN']) . '" 
                       class="btn btn-primary w-100" style="background-color: #8B7355; border-color: #8B7355;">View Details</a>';
@@ -481,18 +481,18 @@ $stmt->execute();
         }
         echo '</div>';
         
-        // Add pagination controls
+        // oldalazasi kontroll
         echo '<nav aria-label="Page navigation" class="mt-4">';
         echo '<ul class="pagination justify-content-center">';
         
-        // Previous button
+        // ezelotti
         $prev_disabled = $page <= 1 ? 'disabled' : '';
         echo '<li class="page-item ' . $prev_disabled . '">';
         echo '<a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $page - 1])) . '" aria-label="Previous">';
         echo '<span aria-hidden="true">&laquo;</span>';
         echo '</a></li>';
         
-        // Page numbers
+        // oldalszamok
         $start_page = max(1, $page - 2);
         $end_page = min($total_pages, $page + 2);
         
@@ -517,7 +517,7 @@ $stmt->execute();
             echo '<li class="page-item"><a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $total_pages])) . '">' . $total_pages . '</a></li>';
         }
         
-        // Next button
+        // kovi
         $next_disabled = $page >= $total_pages ? 'disabled' : '';
         echo '<li class="page-item ' . $next_disabled . '">';
         echo '<a class="page-link" href="?' . http_build_query(array_merge($_GET, ['page' => $page + 1])) . '" aria-label="Next">';
@@ -543,7 +543,7 @@ function toggleSortOptions() {
     sortOptions.classList.toggle('show');
 }
 
-// Close the dropdown when clicking outside
+//dropdown kilep
 document.addEventListener('click', function(event) {
     const sortDropdown = document.querySelector('.sort-dropdown');
     const sortOptions = document.getElementById('sortOptions');

@@ -59,7 +59,7 @@ if ($isbn) {
     $copiesStmt->execute([$isbn]);
     $allCopies = $copiesStmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Separate available and borrowed copies
+    // Kolcsonzott VS elerheto peldaonyok
     $availableCopies = array_filter($allCopies, function($copy) {
         return $copy['is_borrowed'] == 0;
     });
@@ -68,7 +68,7 @@ if ($isbn) {
     });
 
     if (isset($_SESSION['username'])) {
-        // Get waitlist position
+        //Varolista
         $waitlistPositionStmt = $conn->prepare("
             SELECT COUNT(*) as position 
             FROM waitlist 
@@ -81,7 +81,7 @@ if ($isbn) {
         $waitlistPositionStmt->execute([$isbn, $_SESSION['user_id'], $isbn]);
         $waitlistPosition = $waitlistPositionStmt->fetch(PDO::FETCH_ASSOC)['position'] ?? 0;
 
-        // Get total waitlist count
+        //Varolista
         $waitlistCountStmt = $conn->prepare("
             SELECT COUNT(*) as total 
             FROM waitlist 
@@ -90,7 +90,7 @@ if ($isbn) {
         $waitlistCountStmt->execute([$isbn]);
         $totalWaitlist = $waitlistCountStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
-        // Check if user is on waitlist
+        //Varlistan vane
         $waitlistStmt = $conn->prepare("
             SELECT * FROM waitlist 
             WHERE Member_ID = ? AND ISBN = ?
@@ -102,7 +102,7 @@ if ($isbn) {
     if(isset($_SESSION['user_id'])){
 
     logUserActivity($_SESSION['user_id'], $isbn, 'Viewed', $conn);
-    // Handle borrow action
+    //Kolcsonzes
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['borrow']) && isset($_POST['copy_id'])) {
             $copyId = $_POST['copy_id'];
@@ -111,7 +111,7 @@ if ($isbn) {
             try {
                 $conn->beginTransaction();
 
-                // Check if copy is still available
+                // Elerheto meg
                 $checkCopyStmt = $conn->prepare("
                     SELECT COUNT(*) 
                     FROM borrowing 
@@ -122,7 +122,7 @@ if ($isbn) {
                     throw new Exception("This copy is no longer available.");
                 }
 
-                // Insert into borrowing table
+                // Insert 
                 $borrowStmt = $conn->prepare("
                     INSERT INTO borrowing (Borrowing_Date, Work_Id, Copy_ID, Member_ID, Status)
                     VALUES (CURDATE(), 1, :copy_id, :member_id, 'Checked Out')
@@ -144,7 +144,7 @@ if ($isbn) {
         }
     }
 
-    // Handle join waitlist
+    // Varolista csatlakozas
     if (isset($_POST['join_waitlist'])) {
         $waitlistInsert = $conn->prepare("
             INSERT IGNORE INTO waitlist (Member_ID, ISBN)
@@ -160,7 +160,7 @@ if ($isbn) {
         exit;
     }
 
-    // Handle leave waitlist
+    // Varolistta kilepes
     if (isset($_POST['leave_waitlist'])) {
         $waitlistDelete = $conn->prepare("
             DELETE FROM waitlist 
@@ -176,12 +176,12 @@ if ($isbn) {
         exit;
     }
 
-    // Handle add to reading list
+    //Olvasai lista +
     if (isset($_POST['add_to_list']) && isset($_POST['list_id'])) {
         $listId = $_POST['list_id'];
         
         try {
-            // Check if book is already in the list
+            // Ott van mar?
             $checkStmt = $conn->prepare("
                 SELECT COUNT(*) FROM reading_list_book
                 WHERE List_ID = ? AND ISBN = ?
@@ -189,7 +189,7 @@ if ($isbn) {
             $checkStmt->execute([$listId, $isbn]);
             
             if ($checkStmt->fetchColumn() == 0) {
-                // Add book to reading list
+                // hozzad
                 $addStmt = $conn->prepare("
                     INSERT INTO reading_list_book (List_ID, ISBN)
                     VALUES (?, ?)
@@ -207,14 +207,14 @@ if ($isbn) {
         exit;
     }
 
-    // Handle update status
+    // Statusz up
     if (isset($_POST['update_status'])) {
         $newStatus = $_POST['update_status'];
         
         try {
             $conn->beginTransaction();
             
-            // Remove from all reading lists first
+            // olvasasi lista torlese
             $stmt = $conn->prepare("
                 DELETE rlb FROM reading_list_book rlb
                 JOIN reading_list rl ON rlb.List_ID = rl.List_ID
@@ -223,14 +223,14 @@ if ($isbn) {
             $stmt->execute([$_SESSION['user_id'], $isbn]);
             
             if ($newStatus === 'remove') {
-                // Remove status
+                // kivetele
                 $stmt = $conn->prepare("
                     DELETE FROM user_book_status 
                     WHERE Member_ID = ? AND ISBN = ?
                 ");
                 $stmt->execute([$_SESSION['user_id'], $isbn]);
             } else {
-                // Get the reading list ID for the new status
+                // Olvasasi lista id
                 $listStmt = $conn->prepare("
                     SELECT List_ID FROM reading_list 
                     WHERE Member_ID = ? AND Name = ?
@@ -239,17 +239,17 @@ if ($isbn) {
                 $listId = $listStmt->fetchColumn();
                 
                 if ($listId) {
-                    // Add to the corresponding reading list
+                    // hozzaad
                     $stmt = $conn->prepare("
                         INSERT IGNORE INTO reading_list_book (List_ID, ISBN)
                         VALUES (?, ?)
                     ");
                     $stmt->execute([$listId, $isbn]);
                     
-                    // For DNF status, store it as 'Read' in the database
+                    // ha dnf akkor olvasta
                     $dbStatus = ($newStatus === 'DNF') ? 'Read' : $newStatus;
                     
-                    // Update or insert status
+                    // inserrt
                     $stmt = $conn->prepare("
                         INSERT INTO user_book_status (Member_ID, ISBN, Status)
                         VALUES (?, ?, ?)
@@ -269,7 +269,7 @@ if ($isbn) {
         exit;
     }
 
-    // Add this near the top of the file where other POST handlers are
+    
     if (isset($_POST['submit_review'])) {
         $rating = $_POST['rating'] ?? null;
         $review = trim($_POST['review'] ?? '');
@@ -429,8 +429,9 @@ if ($isbn) {
         }
         .rating-stars {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 6px; /* space between stars */
         }
 
         .rating-stars input {
@@ -439,15 +440,21 @@ if ($isbn) {
 
         .star-label {
             cursor: pointer;
-            font-size: 2rem;
-            color: #dee2e6;
+            font-size: 30px;
+            color: gray;
             transition: color 0.2s;
         }
 
+        
         .rating-stars input:checked ~ .star-label,
+        .rating-stars input:checked ~ .star-label ~ .star-label {
+            color: gold;
+        }
+
+    
         .star-label:hover,
         .star-label:hover ~ .star-label {
-            color: #ffc107;
+            color: gold;
         }
 
         .review-form textarea {
@@ -529,7 +536,7 @@ if ($isbn) {
                             $statusStmt->execute([$_SESSION['user_id'], $isbn]);
                             $currentStatus = $statusStmt->fetchColumn();
                             
-                            // Check if this is a DNF book (stored as 'Read' in DB but shown as DNF)
+                            //Dnf helyes elmentese erdekeben
                             $isDNF = false;
                             if ($currentStatus === 'Read') {
                                 $listStmt = $conn->prepare("
@@ -574,7 +581,7 @@ if ($isbn) {
                             <div class="status-box mt-4">
                                 <h5 class="mb-3">My Review</h5>
                                 <?php
-                                // Fetch existing review
+                                // Ertekeles lekerese
                                 $reviewStmt = $conn->prepare("
                                     SELECT Rating, Comment as Review 
                                     FROM review 
@@ -586,15 +593,15 @@ if ($isbn) {
                                 <form method="POST" class="review-form">
                                     <div class="mb-4">
                                         <label class="form-label info-label">Rating</label>
-                                        <div class="rating-stars">
-                                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                                <input type="radio" name="rating" value="<?= $i ?>" 
-                                                       id="star<?= $i ?>" <?= ($review && $review['Rating'] == $i) ? 'checked' : '' ?>>
-                                                <label for="star<?= $i ?>" class="star-label">
-                                                    <i class="bi bi-star-fill"></i>
-                                                </label>
-                                            <?php endfor; ?>
-                                        </div>
+                                    <div class="rating-stars">
+                                        <?php for ($i = 5; $i >= 1; $i--): ?>
+                                            <input type="radio" name="rating" value="<?= $i ?>" id="star<?= $i ?>" <?= ($review && $review['Rating'] == $i) ? 'checked' : '' ?>>
+                                            <label for="star<?= $i ?>" class="star-label">
+                                                <i class="bi bi-star-fill"></i>
+                                            </label>
+                                        <?php endfor; ?>
+                                    </div>
+
                                     </div>
                                     <div class="mb-4">
                                         <label for="review" class="form-label info-label">Review (Optional)</label>
@@ -618,7 +625,7 @@ if ($isbn) {
                 </div>
             </div>
 
-            <!-- Right Column - Book Details -->
+            <!-- Book Details -->
             <div class="col-md-8">
                 <div class="book-info">
                     <h1 class="book-title"><?= htmlspecialchars($bookDetails['Title']) ?></h1>
@@ -741,11 +748,11 @@ if ($isbn) {
                             <?php endif; ?>
                         </div>
 
-                        <!-- Reading List Section -->
+                        <!-- Reading List -->
                         <div class="availability-box mt-4">
                             <h5 class="mb-4">Reading Lists</h5>
                             <?php
-                            // Fetch user's reading lists
+                            // Olvassai listak lekerese
                             $readingListsStmt = $conn->prepare("
                                 SELECT rl.List_ID, rl.Name as List_Name, 
                                        CASE WHEN rlb.ISBN IS NOT NULL THEN 1 ELSE 0 END as is_in_list
@@ -800,14 +807,14 @@ if ($isbn) {
             </div>
         </div>
 
-        <!-- Similar Books Section -->
+        <!-- Similar Books-->
         <div class="mt-5">
             <div class="book-info">
                 <h3 class="mb-4">Similar Books</h3>
                 <div class="position-relative">
                     <div class="similar-books-container d-flex" style="overflow: hidden;">
                         <?php
-                        // Get similar books
+                        // Book_similarity lekerese
                         $similarStmt = $conn->prepare("
                             SELECT b.ISBN, b.Title, b.Image_URL,
                                    GROUP_CONCAT(DISTINCT a.Name SEPARATOR ', ') as authors,
@@ -879,7 +886,7 @@ if ($isbn) {
     <script>
         function scrollSimilarBooks(direction) {
             const container = document.querySelector('.similar-books-container');
-            const scrollAmount = 400; // Adjust this value to control scroll distance
+            const scrollAmount = 400; 
             
             if (direction === 'left') {
                 container.scrollBy({
@@ -898,24 +905,24 @@ if ($isbn) {
     const ratingInputs = document.querySelectorAll('.rating-stars input');
     const starLabels = document.querySelectorAll('.star-label');
     
-    // Function to update star colors
+    
     function updateStars(rating) {
         starLabels.forEach((label, index) => {
             if (index < rating) {
-                label.style.color = '#ffc107'; // Gold color for filled stars
+                label.style.color = '#ffc107'; 
             } else {
-                label.style.color = '#dee2e6'; // Gray color for unfilled stars
+                label.style.color = '#dee2e6'; 
             }
         });
     }
 
-    // Initialize stars based on current rating
+    /
     const checkedInput = document.querySelector('.rating-stars input:checked');
     if (checkedInput) {
         updateStars(parseInt(checkedInput.value));
     }
 
-    // Add hover effects
+
     starLabels.forEach((label, index) => {
         label.addEventListener('mouseenter', () => {
             updateStars(index + 1);
@@ -933,7 +940,7 @@ if ($isbn) {
         });
     });
 
-    // Handle form submission
+    
     const reviewForm = document.querySelector('.review-form');
     if (reviewForm) {
         reviewForm.addEventListener('submit', function(e) {

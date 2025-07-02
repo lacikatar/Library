@@ -4,14 +4,13 @@ import mysql.connector
 from datetime import datetime
 import logging
 
-# Set up logging
+
 logging.basicConfig(
     filename='recommender_daemon.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# Database config
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -19,13 +18,13 @@ db_config = {
     'database': 'Librarydb'
 }
 
-# Paths to scripts
+
 PYTHON_PATH = r'C:\Users\tarla\AppData\Local\Programs\Python\Python310\python.exe'
 COLLAB_SCRIPT = r'D:\xampp\htdocs\Library\collaborative_filtering.py'
 HYBRID_SCRIPT = r'D:\xampp\htdocs\Library\hybrid_recommendations.py'
 SIMILARITY_SCRIPT = r'D:\xampp\htdocs\Library\book_similarity.py'
 
-# Track last seen IDs
+
 last_activity_id = None
 last_book_isbn = None
 
@@ -42,18 +41,19 @@ def get_last_activity_id():
         logging.error(f"Failed to fetch latest activity ID: {str(e)}")
         return None
 
-def get_last_book_isbn():
+def get_book_count():
     try:
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
-        cursor.execute("SELECT MAX(ISBN) FROM book")
+        cursor.execute("SELECT COUNT(*) FROM book")
         result = cursor.fetchone()[0]
         cursor.close()
         conn.close()
         return result
     except Exception as e:
-        logging.error(f"Failed to fetch latest book ISBN: {str(e)}")
+        logging.error(f"Failed to fetch book count: {str(e)}")
         return None
+
 
 def run_script(script_path):
     try:
@@ -74,26 +74,27 @@ def main():
 
     logging.info("Starting recommender daemon...")
     last_activity_id = get_last_activity_id()
-    last_book_isbn = get_last_book_isbn()
+    last_book_isbn = get_book_count()
 
     while True:
         try:
+            logging.info("Checking")
             new_activity_id = get_last_activity_id()
-            new_book_isbn = get_last_book_isbn()
+            new_book_isbn = get_book_count()
 
-            # Trigger collab + hybrid if activity changed
+      
             if new_activity_id and new_activity_id != last_activity_id:
                 logging.info("New user activity detected.")
                 trigger_script_sequence([COLLAB_SCRIPT, HYBRID_SCRIPT])
                 last_activity_id = new_activity_id
 
-            # Trigger similarity if a new book was added
+            
             if new_book_isbn and new_book_isbn != last_book_isbn:
                 logging.info("New book added.")
-                run_script(SIMILARITY_SCRIPT)
+                trigger_script_sequence([SIMILARITY_SCRIPT, HYBRID_SCRIPT])
                 last_book_isbn = new_book_isbn
-
-            time.sleep(30)  # Wait 2 minutes
+            
+            time.sleep(5)
 
         except Exception as e:
             logging.error(f"Daemon loop error: {str(e)}")

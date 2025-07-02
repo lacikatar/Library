@@ -5,7 +5,7 @@ import mysql.connector
 from datetime import datetime, timedelta
 import logging
 
-# Set up logging
+#Naplo
 logging.basicConfig(
     filename='hybrid_recommendations.log',
     level=logging.INFO,
@@ -26,7 +26,7 @@ class HybridRecommender:
             'Reviewed': 4,
             'Added to List': 2
         }
-        # Weight for hybrid scoring (0.6 collaborative, 0.4 content-based)
+       
         self.collaborative_weight = 0.6
         self.content_weight = 0.4
 
@@ -169,10 +169,10 @@ class HybridRecommender:
             conn = mysql.connector.connect(**self.db_config)
             cursor = conn.cursor()
 
-            # Clear old recommendations
+            
             cursor.execute("DELETE FROM recommendations WHERE Member_ID = %s", (user_id,))
 
-            # Insert new ones
+           
             for isbn, score in recommendations:
                 cursor.execute("""
                     INSERT INTO recommendations (Member_ID, ISBN, Score)

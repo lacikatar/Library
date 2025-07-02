@@ -2,7 +2,7 @@
 session_start();
 require_once 'functions.php';
 
-// Check if user is logged in
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -20,7 +20,7 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Handle create new list
+// uj lista
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_list'])) {
     $listName = trim($_POST['list_name']);
     if (!empty($listName)) {
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_list'])) {
     }
 }
 
-// Handle delete list
+//Lista torlese
 if (isset($_GET['delete_list'])) {
     $listId = $_GET['delete_list'];
     try {
@@ -52,7 +52,7 @@ if (isset($_GET['delete_list'])) {
     }
 }
 
-// Handle remove book from list
+// Konzv kiszedese
 if (isset($_GET['remove_book'])) {
     $listId = $_GET['list_id'];
     $isbn = $_GET['remove_book'];
@@ -68,7 +68,7 @@ if (isset($_GET['remove_book'])) {
     }
 }
 
-// Fetch all reading lists for the user
+// Osszes lista
 $listsStmt = $conn->prepare("
     SELECT rl.List_ID, rl.Name as List_Name, COUNT(rlb.ISBN) as book_count
     FROM reading_list rl
@@ -178,7 +178,7 @@ $readingLists = $listsStmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
 
                     <?php
-                    // Fetch books in this list
+                    // lekeres konyv
                     $booksStmt = $conn->prepare("
                         SELECT b.*, GROUP_CONCAT(a.Name SEPARATOR ', ') as authors
                         FROM reading_list_book rlb
@@ -234,7 +234,7 @@ $readingLists = $listsStmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 </div>
 
-<!-- Create List Modal -->
+<!-- Lista-->
 <div class="modal fade" id="createListModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -8,7 +8,7 @@ import logging
 import time
 from collections import defaultdict
 
-# Set up logging
+# Naplo
 logging.basicConfig(
     filename='similarity_calculation.log',
     level=logging.INFO,
@@ -27,7 +27,7 @@ def get_db_connection():
     except Error as e:
         logging.error(f"Error connecting to MySQL: {e}")
         raise
-
+#adatok lekerese
 def get_books_data(connection):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -55,15 +55,14 @@ def get_books_data(connection):
         logging.error(f"Error fetching books data: {e}")
         raise
 
+#leiras szamitasa
 def calculate_text_similarity(books):
     text_blob = [
-        f"{book['Description']} {book['Authors']} {book['Tags']} {book['Categories']}"
+        f"{book['Title']} {book['Description']} {book['Authors']} {book['Tags']} {book['Categories']}"
         for book in books
     ]
     vectorizer = TfidfVectorizer(stop_words='english')
     tfidf_matrix = vectorizer.fit_transform(text_blob)
-    #logging.info(f"TF-IDF matrix shape: {tfidf_matrix.shape}")  
-    #logging.info(f"TF-IDF matrix: {tfidf_matrix}")
     return cosine_similarity(tfidf_matrix)
 
 def calculate_similarities(books):
@@ -80,23 +79,23 @@ def calculate_similarities(books):
                 continue
             book2 = books[k]
 
-            # Series similarity (0.1)
+            
             series_sim = 0.1 if book1['Series_ID'] and book1['Series_ID'] == book2['Series_ID'] else 0
 
-            # Description similarity (0.3)
+          
             desc_sim = text_similarities[j][k] * 0.3
 
-            # Author similarity (0.2)
+            
             authors1 = set(book1['Authors'].split(',')) if book1['Authors'] else set()
             authors2 = set(book2['Authors'].split(',')) if book2['Authors'] else set()
             author_sim = 0.2 * len(authors1.intersection(authors2)) / max(len(authors1), len(authors2)) if authors1 and authors2 else 0
 
-            # Category similarity (0.2)
+      
             cats1 = set(book1['Categories'].split(',')) if book1['Categories'] else set()
             cats2 = set(book2['Categories'].split(',')) if book2['Categories'] else set()
             cat_sim = 0.2 * len(cats1.intersection(cats2)) / max(len(cats1), len(cats2)) if cats1 and cats2 else 0
 
-            # Tag similarity (0.2)
+            
             tags1 = set(book1['Tags'].split(',')) if book1['Tags'] else set()
             tags2 = set(book2['Tags'].split(',')) if book2['Tags'] else set()
             tag_sim = 0.2 * len(tags1.intersection(tags2)) / max(len(tags1), len(tags2)) if tags1 and tags2 else 0
@@ -106,7 +105,7 @@ def calculate_similarities(books):
             
             sim_list.append((book2['ISBN'], total_sim))
 
-        # Keep only top 10 similar books
+       
         sim_list.sort(key=lambda x: x[1], reverse=True)
         for isbn2, score in sim_list[:10]:
             similarities.append((book1['ISBN'], isbn2, round(score, 4)))
@@ -117,10 +116,10 @@ def store_similarities(connection, similarities):
     try:
         cursor = connection.cursor()
 
-        # Clear existing similarities
+       
         cursor.execute("TRUNCATE TABLE book_similarity")
 
-        # Insert new similarities in batches
+       
         batch_size = 1000
         for i in range(0, len(similarities), batch_size):
             batch = similarities[i:i + batch_size]

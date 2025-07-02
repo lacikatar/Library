@@ -114,3 +114,39 @@
 2025-06-11 00:48:39,400 - INFO - Stored batch 3 of 3
 2025-06-11 00:48:39,400 - INFO - Similarities stored in database
 2025-06-11 00:48:39,402 - INFO - Process completed in 1.27 seconds
+2025-06-13 00:32:44,775 - INFO - Starting similarity calculation
+2025-06-13 00:32:44,865 - INFO - Database connection established
+2025-06-13 00:32:44,935 - INFO - Retrieved 254 books
+2025-06-13 00:32:45,900 - INFO - Calculated 2540 similarity pairs
+2025-06-13 00:32:46,130 - INFO - Stored batch 1 of 3
+2025-06-13 00:32:46,236 - INFO - Stored batch 2 of 3
+2025-06-13 00:32:46,284 - INFO - Stored batch 3 of 3
+2025-06-13 00:32:46,284 - INFO - Similarities stored in database
+2025-06-13 00:32:46,284 - INFO - Process completed in 1.51 seconds
+2025-06-13 00:37:38,671 - INFO - Starting similarity calculation
+2025-06-13 00:37:38,693 - INFO - Database connection established
+2025-06-13 00:37:38,757 - INFO - Retrieved 256 books
+2025-06-13 00:37:39,290 - INFO - Calculated 2560 similarity pairs
+2025-06-13 00:37:39,472 - INFO - Stored batch 1 of 3
+2025-06-13 00:37:39,568 - INFO - Stored batch 2 of 3
+2025-06-13 00:37:39,604 - INFO - Stored batch 3 of 3
+2025-06-13 00:37:39,610 - INFO - Similarities stored in database
+2025-06-13 00:37:39,610 - INFO - Process completed in 0.94 seconds
+2025-06-17 15:34:17,876 - INFO - Starting similarity calculation
+2025-06-17 15:34:18,028 - INFO - Database connection established
+2025-06-17 15:34:18,091 - INFO - Retrieved 256 books
+2025-06-17 15:34:19,149 - INFO - Calculated 2560 similarity pairs
+2025-06-17 15:34:19,511 - INFO - Stored batch 1 of 3
+2025-06-17 15:34:19,594 - INFO - Stored batch 2 of 3
+2025-06-17 15:34:19,626 - INFO - Stored batch 3 of 3
+2025-06-17 15:34:19,626 - INFO - Similarities stored in database
+2025-06-17 15:34:19,627 - INFO - Process completed in 1.75 seconds
+2025-06-18 16:19:07,816 - INFO - Starting similarity calculation
+2025-06-18 16:19:07,913 - INFO - Database connection established
+2025-06-18 16:19:07,957 - INFO - Retrieved 256 books
+2025-06-18 16:19:08,490 - INFO - Calculated 2560 similarity pairs
+2025-06-18 16:19:08,678 - INFO - Stored batch 1 of 3
+2025-06-18 16:19:08,726 - INFO - Stored batch 2 of 3
+2025-06-18 16:19:08,757 - INFO - Stored batch 3 of 3
+2025-06-18 16:19:08,757 - INFO - Similarities stored in database
+2025-06-18 16:19:08,757 - INFO - Process completed in 0.94 seconds
